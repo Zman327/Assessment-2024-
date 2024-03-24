@@ -1,0 +1,487 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2; /* Set a light background color */
+}
+
+header {
+    padding: 10px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Asul&display=swap');
+
+.navbar {
+    background-color: #fff;
+    padding: 0.2%;
+    border-radius: 20px; /* Reduced border radius */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between; /* Center align logo and menu */
+    align-items: center;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 1s ease; /* Smooth background color transition */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #34495e; /* Dropdown background color */
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.menu li a {
+    position: relative;
+}
+
+.menu li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #0acac7; 
+    /*333 */
+    transition: width 0.7s ease; /* Animation transition */
+}
+
+.menu li a:hover::after {
+    width: 100%; 
+}
+
+#home {
+    position: relative;
+}
+
+.logo {
+    font-size: 1.5rem; /* Increased logo size */
+}
+
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.menu li {
+    margin-right: 20px;
+}
+
+.menu li:last-child {
+    margin-right: 0; /* Remove margin from last menu item */
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #333;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+    color: #666;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.icons img {
+    width: 25px; /* Increased icon size */
+    height: 25px; /* Increased icon size */
+}
+
+main {
+    padding: 0%;
+    text-align: center; /* Center align main content */
+}
+
+.btns button {
+    height: 40px;
+    width: 150px;
+    border-radius: 100px;
+    border: none;
+    margin: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.btns button:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.welcome-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0,0,0, 0.4);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1;
+    font-weight: bold;
+    font-size: 28px;
+    border: 5px solid #f1f1f1;
+    width: 60%;
+    margin: auto;
+}
+
+.welcome-overlay h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.fencing-matches {
+    text-align: center;
+    background-color: #ffffff;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.fencing-matches h2 {
+    margin-bottom: 20px;
+}
+
+.match {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.match h3 {
+    margin-bottom: 10px;
+}
+
+.box-container {
+    display: flex;
+    justify-content: space-between; /* Adjust spacing between boxes */
+}
+
+video {
+    position: static;
+    top: 0;
+    left: 0;
+    min-width: none;
+    min-height: none;
+    max-width: 100%;
+    max-height: 100%;
+    z-index: -1; /* Push the video behind other elements */
+}
+
+/* Add media queries for different screen sizes */
+@media only screen and (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+}
+
+@media only screen and (max-width: 480px) {
+    /* Further adjustments for mobile devices */
+}
+
+/* Styles for game mini cards */
+.game-mini-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.game-mini-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Styles for game mini card header */
+.game-mini-card_header {
+    padding: 10px;
+    background-color: #9c9c9c;
+}
+
+.game-mini-card_date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.game-mini-card_tournament {
+    margin-top: 5px;
+}
+
+/* Styles for game mini card team */
+.game-mini-card_team_wrapper {
+    display: flex;
+}
+
+.game-mini-card_team {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.team-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+/* Styles for game mini card score */
+.game-mini-card_score {
+    margin-left: auto;
+}
+
+/* Section */
+.s-game-slider {
+    margin-top: 20px;
+}
+
+/* Container */
+.container-game-slider {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Game Slider Wrapper */
+.game-slider_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Left Arrow */
+.game-slider_arrow.is-left {
+    margin-right: 20px;
+}
+
+/* Right Arrow */
+.game-slider_arrow.is-right {
+    margin-left: 20px;
+}
+
+/* Slider Column Wrapper */
+.game-slider_col_wrapper {
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Slider Column List */
+.game-slider_col_list {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+/* Arrow Icon */
+.game-slider_arrow_icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Add styles for the black line */
+.match-line {
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    margin: 20px 0;
+}
+
+/* Styles for the button to cycle through matches */
+#cycle-match-btn {
+    height: 40px;
+    width: 150px;
+    border-radius: 5px;
+    border: none;
+    margin: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #333;
+    color: #fff;
+}
+
+#cycle-match-btn:hover {
+    background-color: #555; /* Change color on hover */
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.social-media img {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    text-align: center;
+}
+.selectors {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.selectors select {
+    padding: 8px 12px;
+    font-size: 16px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+table th {
+    background-color: #f2f2f2;
+}
+
+body {
+    cursor: url('Images/Cursor_hover.png') 15 15, auto;
+}
+
+a:hover {
+    cursor: url('Images/Cursor_hover.png') 15 15, auto;
+}
+
+/* Keyframes for the cursor animation */
+@keyframes cursorAnimation {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.5); /* Change the scale factor as needed */
+    }
+}
+
+/* Split layout styles */
+.about-us {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column {
+    flex: 1;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.column img {
+    width: 100%;
+    height: auto;
+}
+
+/* Reverse the layout for the second section */
+.about-us.reversed .column {
+    order: -1;
+}
+
+.about-us.reversed .column img {
+    order: 1;
+}
+
+/* Common styles for both sections */
+.about-us h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.about-us p {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: justify;
+}
