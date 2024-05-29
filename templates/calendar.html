@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fencing Hub</title>
+    <link rel="stylesheet" href="/Static/styles.css">
+    <!-- Add favicon -->
+    <link rel="icon" type="image/png" href="/Images/Logo.png">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <img src="/Images/Logos/Logo_removed.png" alt="Logo" class="logo-img">
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rankings.html">Rankings</a></li>
+                <li class="dropdown">
+                    <a href="events.html">Events ▼</a>
+                    <div class="dropdown-content">
+                        <a href="calendar.html">Calendar</a>
+                        <a href="#">Results</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Information ▼</a>
+                    <div class="dropdown-content">
+                        <a href="about_fencing.html">About Fencing</a>
+                        <a href="fencing_stories.html">Stories</a>
+                        <a href="about_us.html">About Us</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="btns">
+                <button onclick="window.location.href='Menu.html'">Contact</button>
+            </div>
+        </nav>
+    </header>
+</head>
+<body>
+<div class="container">
+    <h1>Events Calendar</h1>
+    <div class="selectors">
+        <label for="month">Select Month:</label>
+        <select id="month">
+            <option value="january">January</option>
+            <option value="february">February</option>
+            <option value="march">March</option>
+            <!-- Add other months as needed -->
+        </select>
+        <label for="year">Select Year:</label>
+        <select id="year">
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <!-- Add other years as needed -->
+        </select>
+    </div>
+    <table id="calendar">
+        <thead>
+            <tr>
+                <th>Sunday</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Calendar days will be generated dynamically using JavaScript -->
+        </tbody>
+    </table>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
