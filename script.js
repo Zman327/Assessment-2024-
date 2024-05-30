@@ -160,4 +160,23 @@ $(document).ready(function() {
       ]
     });
     
+});
+
+function filterRankings() {
+  const selectedWeapons = Array.from(document.querySelectorAll('#weaponSelector input:checked')).map(checkbox => checkbox.value);
+  const selectedGenders = Array.from(document.querySelectorAll('#genderSelector input:checked')).map(checkbox => checkbox.value);
+  const rows = document.querySelectorAll('#rankingsTable tbody tr');
+
+  rows.forEach(row => {
+      const rowWeapon = row.getAttribute('data-weapon');
+      const rowGender = row.getAttribute('data-gender');
+      const weaponMatch = selectedWeapons.length === 0 || selectedWeapons.includes(rowWeapon);
+      const genderMatch = selectedGenders.length === 0 || selectedGenders.includes(rowGender);
+
+      if (weaponMatch && genderMatch) {
+          row.style.display = '';
+      } else {
+          row.style.display = 'none';
+      }
   });
+}

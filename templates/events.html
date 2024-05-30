@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
 </head>
 <body>
-
+  
 <br/>
 
 <div class="ui container">
@@ -93,5 +93,9 @@
     });
   });
 </script>
+{% for i in male_fencers %}
+<p>{{ i }}</p>
+{% endfor %}
+{% endblock %}
 </body>
 </html>

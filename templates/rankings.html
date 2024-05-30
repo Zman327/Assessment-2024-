@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rankings - Fencing Hub</title>
+    <link rel="stylesheet" href="/Static/styles.css">
+    <link rel="icon" type="image/png" href="/Images/Logos/Logo.png">
+</head>
+<body id="rankings-page">
+        <nav class="navbar">
+            <img src="/Images/Logos/Logo_removed.png" alt="Fencing Hub Logo" class="logo-img">
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rankings.html">Rankings</a></li>
+                <li class="dropdown">
+                    <a href="events.html">Events ▼</a>
+                    <div class="dropdown-content">
+                        <a href="calendar.html">Calendar</a>
+                        <a href="#">Results</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Information ▼</a>
+                    <div class="dropdown-content">
+                        <a href="about_fencing.html">About Fencing</a>
+                        <a href="fencing_stories.html">Stories</a>
+                        <a href="about_us.html">About Us</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="btns">
+                <button onclick="window.location.href='Menu.html'">Contact</button>
+            </div>
+        </nav>
+    <main class="main_container">
+        <h1>Rankings & Athletes</h1>
+        <div class="selectors">
+            <div class="selector-group">
+                <div class="selector-label">Weapon</div>
+                <div id="weaponSelector">
+                    <label for="epee"><input type="checkbox" id="epee" value="epee" onchange="filterRankings()"> Épée</label>
+                    <label for="foil"><input type="checkbox" id="foil" value="foil" onchange="filterRankings()"> Foil</label>
+                    <label for="sabre"><input type="checkbox" id="sabre" value="sabre" onchange="filterRankings()"> Sabre</label>
+                </div>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="selector-group">
+                <div class="selector-label">Gender</div>
+                <div id="genderSelector">
+                    <label for="male"><input type="checkbox" id="male" value="male" onchange="filterRankings()"> Male</label>
+                    <label for="female"><input type="checkbox" id="female" value="female" onchange="filterRankings()"> Female</label>
+                </div>
+            </div>
+        </div>        
+        <section class="leaderboard">
+            <div class="leader">
+                <img src="/Images/Fencing-background.jpeg" alt="KONG Man Wai Vivian">
+                <div class="details">
+                    <h2>2</h2>
+                    <h3>KONG Man Wai Vivian</h3>
+                    <p>Nationality</p>
+                </div>
+            </div>
+            <div class="leader">
+                <img src="/Images/Fencing-background.jpeg" alt="CANDASSAMY Marie-Florence">
+                <div class="details">
+                    <h2>1</h2>
+                    <h3>CANDASSAMY Marie-Florence</h3>
+                    <p>Nationality</p>
+                </div>
+            </div>
+            <div class="leader">
+                <img src="/Images/Fencing-background.jpeg" alt="SONG Sera">
+                <div class="details">
+                    <h2>3</h2>
+                    <h3>SONG Sera</h3>
+                    <p>Nationality</p>
+                </div>
+            </div>
+        </section>
+        <section class="container">
+            <table id="rankingsTable">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Nationality</th>
+                        <th>Weapon</th>
+                        <th>Gender</th>
+                        <th>Hand</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Sample data, replace with actual data -->
+                    <tr data-weapon="epee" data-gender="male">
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>USA</td>
+                        <td>Épée</td>
+                        <td>Male</td>
+                        <td>Right</td>
+                        <td>25</td>
+                    </tr>
+                    <tr data-weapon="foil" data-gender="female">
+                        <td>2</td>
+                        <td>Jane Smith</td>
+                        <td>UK</td>
+                        <td>Foil</td>
+                        <td>Female</td>
+                        <td>Left</td>
+                        <td>23</td>
+                    </tr>
+                    <tr data-weapon="sabre" data-gender="male">
+                        <td>3</td>
+                        <td>Mike Johnson</td>
+                        <td>Canada</td>
+                        <td>Sabre</td>
+                        <td>Male</td>
+                        <td>Right</td>
+                        <td>28</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <ul>
+            <li>&copy; 2024 Fencing Hub. All rights reserved.</li>
+        </ul>
+        <div class="social-media">
+            <a href="#"><img src="/Images/Logos/Facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="/Images/Logos/X.png" alt="Twitter"></a>
+            <a href="#"><img src="/Images/Logos/Insta.png" alt="Instagram"></a>
+        </div>
+    </footer>
+    <script>
+        function filterRankings() {
+            const selectedWeapons = Array.from(document.querySelectorAll('#weaponSelector input:checked')).map(checkbox => checkbox.value);
+            const selectedGenders = Array.from(document.querySelectorAll('#genderSelector input:checked')).map(checkbox => checkbox.value);
+            const rows = document.querySelectorAll('#rankingsTable tbody tr');
+
+            rows.forEach(row => {
+                const rowWeapon = row.getAttribute('data-weapon');
+                const rowGender = row.getAttribute('data-gender');
+                const weaponMatch = selectedWeapons.length === 0 || selectedWeapons.includes(rowWeapon);
+                const genderMatch = selectedGenders.length === 0 || selectedGenders.includes(rowGender);
+
+                if (weaponMatch && genderMatch) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

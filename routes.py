@@ -19,5 +19,3 @@ def aboutpage():
 
 if __name__ == "__main__":  # Last lines
     app.run(debug=True)
-
-

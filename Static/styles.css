@@ -1,15 +1,11 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #000000; /* Set a light background color */
-}
-
-header {
-    padding: 10px;
+    background-color: #ffffff; /* Set a light background color */
 }
 
 video {
-    position: absolute;
+    position: static;
     top: 0;
     left: 0;
     width: 100%;
@@ -17,8 +13,6 @@ video {
     object-fit: cover;
     z-index: -1;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Asul&display=swap');
 
 .navbar {
     background-color: #fff;
@@ -31,34 +25,6 @@ video {
     position: sticky;
     top: 0;
     z-index: 1000;
-    }
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    background-color: #0acac7; /* Updated to light blue */
-    padding: 7px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-    min-width: 160px;
-}
-
-.dropdown a:hover .dropdown-content{
-    color: #0acac7;
-}
-
-.dropdown-content a {
-    color: #0acac7; /* Set text color to light blue */
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    transition: background-color 1s ease; /* Smooth background color transition */
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
 }
 
 .menu li a {
@@ -98,11 +64,7 @@ video {
 }
 
 .menu li {
-    margin-right: 20px;
-}
-
-.menu li:last-child {
-    margin-right: 0; /* Remove margin from last menu item */
+    margin-right: 30px;
 }
 
 .menu li a {
@@ -113,7 +75,7 @@ video {
 }
 
 .menu li a:hover {
-    color: #666;
+    color: #17706d;
 }
 
 .icons img {
@@ -125,6 +87,40 @@ main {
     padding: 0%;
     text-align: center; /* Center align main content */
 }
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f9f9f9;
+    padding: 7px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    min-width: 120px;
+}
+
+.dropdown-content a {
+    color: #0acac7; /* Set text color to light blue */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 1s ease; /* Smooth background color transition */
+}
+
+.dropdown a:hover .dropdown-content{
+    color: #0acac7;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 
 .btns button {
     height: 40px;
@@ -326,6 +322,14 @@ video {
     margin: 20px 0;
 }
 
+.match-line1 {
+    margin-top: 0px auto;
+    margin: 20px auto;
+    width: 50%;
+    height: 2px;
+    background-color: black;
+}
+
 /* Styles for the button to cycle through matches */
 #cycle-match-btn {
     height: 40px;
@@ -346,25 +350,6 @@ video {
     background-color: #555; /* Change color on hover */
 }
 
-.dropdown {
-    position: relative;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -379,9 +364,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-h1 {
-    text-align: center;
-}
+
 .selectors {
     text-align: center;
     margin-bottom: 20px;
@@ -403,13 +386,13 @@ table th {
     background-color: #f2f2f2;
 }
 
-body {
-    cursor: url('/Images/Cursor_hover.png') 15 15, auto;
+/*body {
+    cursor: url('/Images/Cursor_icon.png') 15 15, auto;
 }
 
 a:hover {
-    cursor: url('/Images/Cursor_hover.png') 15 15, auto;
-}
+    cursor: url('/Images/Cursor_icon.png') 15 15, auto;
+}*/
 
 /* Keyframes for the cursor animation */
 @keyframes cursorAnimation {
@@ -474,7 +457,7 @@ footer {
     color: #fff;
     padding: 20px;
     text-align: center;
-    border-top: 2px solid #0acac7;
+    border-top: 4px solid #0acac7;
 }
 
 footer .social-media img {
@@ -490,4 +473,148 @@ footer .social-media img:hover {
     width: 30px;
     height: 30px;
     margin: 0 5px;
+}
+
+.container {
+    max-width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
+.main_container {
+    max-width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+}
+.selectors {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.selectors select {
+    padding: 8px 12px;
+    font-size: 16px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+table th {
+    background-color: #f2f2f2;
+}
+
+#rankings-page {
+    background: linear-gradient(to bottom, #0acac7, #f9f9f9); /* Gradient background */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.leaderboard {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.leader {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.leader:hover {
+    transform: translateY(-10px); /* Moves the element up by 10px */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Increases the shadow for a lifting effect */
+}
+
+.leader img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.details h2 {
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+.details h3 {
+    margin: 5px 0;
+    font-size: 20px;
+}
+
+.details p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+:root {
+    --primary-color: #0acac7;
+    --secondary-color: #f9f9f9;
+    --text-color: #333;
+    --background-color: #ffffff;
+    --accent-color: #17706d;
+}
+
+.main_container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.selectors {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Existing styles */
+
+.selectors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.selector-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.selector-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.vertical-line {
+    width: 2px;
+    height: 50px; /* Adjust height as needed */
+    background-color: black;
+    margin: 0 10px;
 }
