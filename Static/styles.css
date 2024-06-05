@@ -209,25 +209,85 @@ video {
     /* Further adjustments for mobile devices */
 }
 
-/* Styles for game mini cards */
+/* Mini Cards Container */
+.box-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between cards */
+}
+
+.game-mini-card-container {
+    width: 270px;
+}
+
 .game-mini-card {
     display: block;
     text-decoration: none;
-    color: inherit;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 10px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+}
+
+.placement-text {
+    font-weight: bold;
+    margin-top: 3%;
 }
 
 .game-mini-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Header */
+.game-mini-card-header {
+    padding: 15px;
+    background-color: #0acac7;
+    color: #fff;
+    text-align: center;
+}
+
+/* Cycle Match Button */
+#cycle-match-btn {
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0acac7;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+/* Styles for the placement images and text */
+.placement {
+    display: flex;
+    align-items: left;
+    margin-bottom: 10px;
+}
+
+.placement-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.game-mini-card_team {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
 }
 
 /* Styles for game mini card header */
 .game-mini-card_header {
     padding: 10px;
-    background-color: #9c9c9c;
+    background-color: #0acac7;
 }
 
 .game-mini-card_date {
@@ -237,31 +297,12 @@ video {
     font-weight: bold;
 }
 
-.game-mini-card_tournament {
-    margin-top: 5px;
-}
-
-/* Styles for game mini card team */
-.game-mini-card_team_wrapper {
-    display: flex;
-}
-
-.game-mini-card_team {
-    flex: 1;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-}
-
-.team-icon {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-}
-
-/* Styles for game mini card score */
-.game-mini-card_score {
-    margin-left: auto;
+.parallax-section {
+    position: relative;
+    background: url('Static/Images/Background.jpeg') no-repeat center center fixed; 
+    background-size: cover;
+    padding: 20px;
+    color: white; /* Adjust text color for better visibility against the background */
 }
 
 /* Section */
@@ -318,7 +359,7 @@ video {
 .match-line {
     width: 100%;
     height: 2px;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
     margin: 20px 0;
 }
 
@@ -618,3 +659,4 @@ table th {
     background-color: black;
     margin: 0 10px;
 }
+

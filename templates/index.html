@@ -6,27 +6,27 @@
     <title>Fencing Hub</title>
     <link rel="stylesheet" href="/Static/styles.css">
     <!-- Add favicon -->
-    <link rel="icon" type="image/png" href="/Images/Logos/Logo.png">
+    <link rel="icon" type="image/png" href="Static/Images/Logos/Logo.png">
 </head>
 <body id="index-page">
         <nav class="navbar">
-            <img src="/Images/Logos/Logo_removed.png" alt="Logo" class="logo-img">
+            <img src="Static/Images/Logos/Logo_removed.png" alt="Logo" class="logo-img">
             <ul class="menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="rankings.html">Rankings</a></li>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/rankings">Rankings</a></li>
                 <li class="dropdown">
-                    <a href="events.html">Events ▼</a>
+                    <a href="/events">Events ▼</a>
                     <div class="dropdown-content">
-                        <a href="calendar.html">Calendar</a>
+                        <a href="/calendar">Calendar</a>
                         <a href="#">Results</a>
                     </div>
                 </li>
                 <li class="dropdown">
                     <a href="#">Information ▼</a>
                     <div class="dropdown-content">
-                        <a href="about_fencing.html">About Fencing</a>
-                        <a href="fencing_stories.html">Stories</a>
-                        <a href="about_us.html">About Us</a>
+                        <a href="/about_fencing">About Fencing</a>
+                        <a href="/fencing_stories.html">Stories</a>
+                        <a href="/about_us.html">About Us</a>
                     </div>
                 </li>
             </ul>
@@ -35,7 +35,7 @@
             </div>
         </nav>
     <video id="video-background" autoplay loop muted>
-        <source src="/Images/video.mp4" type="video/mp4">
+        <source src="Static/Images/video.mp4" type="video/mp4">
         Your browser does not support the video tag.
         <script src="script.js"></script> 
     </video>
@@ -49,102 +49,100 @@
                 <button onclick="window.location.href='about_us.html'">About us</button>
             </div>
         </div>          
-        <section class="fencing-matches">
-            <h2>Upcoming Fencing Events</h2>
-            <!-- Add a container for the black line -->
+        <section class="fencing-matches parallax-section">
+            <h2>Past Fencing Events</h2>
             <div class="match-line"></div>
-            <!-- Add a button to cycle through matches -->
-        <div class="box-container">
-            <div role="listitem" class="inside-border" tabindex="0" style="width: 270px;" data-slick-index="0" aria-hidden="false">
-                <a href="calendar.html" class="game-mini-card w-inline-block" tabindex="0">
-                    <div class="game-mini-card_header">
-                        <div class="game-mini-card_date">
-                            <div class="date-component text-color-smoke dayclass">World Champs</div>
-                        </div>
-                        <div class="game-mini-card_tournament">
-                            <div class="text-style-xs is-inline">Egypt, Cairo</div>
-                            <div class="text-style-xs is-inline">29th december or smt</div>
-                        </div>
-                    </div>
-                    <div class="game-mini-card_team_wrapper">
-                        <div class="game-mini-card_team">
-                            <div class="team-wrapper">
-                                <img alt="" loading="lazy" src="https://assets-global.website-files.com/651b1b659c7acecc2a62695f/65c48122e8fbac9c3026f31e_652f767fdcea54fad20825a2_Team%253DPuntarenas.png" class="team-icon">
-                                <div class="game-mini-card_team_name">Egypt</div>
+            <div class="box-container">
+                <div role="listitem" class="inside-border" tabindex="0" style="width: 270px;" data-slick-index="0" aria-hidden="false">
+                    <a href="calendar.html" class="game-mini-card w-inline-block" tabindex="0">
+                        <div class="game-mini-card_header">
+                            <div class="game-mini-card_date">
+                                <div class="date-component text-color-smoke dayclass">World Champs</div>
                             </div>
-                            <div class="game-mini-card_score">--</div>
-                        </div>
-                        <div class="game-mini-card_team">
-                            <div class="team-wrapper">
-                                <img alt="" loading="lazy" src="https://assets-global.website-files.com/651b1b659c7acecc2a62695f/652f7a22db673024d849c448_652f766a157b6ad08523ef70_Team%253DSaprissa.png" class="team-icon">
-                                <div class="game-mini-card_team_name">France</div>
+                            <div class="game-mini-card_tournament">
+                                <div class="text-style-xs is-inline">Egypt, Cairo</div>
+                                <div class="text-style-xs is-inline">29th December or smt</div>
                             </div>
-                            <div class="game-mini-card_score">--</div>
                         </div>
-                    </div>
-                </a>
+                        <div class="game-mini-card_team_wrapper">
+                            <div class="game-mini-card_team">
+                                <div class="placement">
+                                    <img src="Static/Images/Medals/Gold_medal.png" alt="1st Place" class="placement-icon">
+                                    <div class="placement-text">1st Place</div>
+                                </div>
+                                <div class="placement">
+                                    <img src="Static/Images/Medals/Silver_Medal.png" alt="2nd Place" class="placement-icon">
+                                    <div class="placement-text">🥈2nd Place</div>
+                                </div>
+                                <div class="placement">
+                                    <img src="Static/Images/Medals/Bronze_Medal.png" alt="3rd Place" class="placement-icon">
+                                    <div class="placement-text">3rd Place</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div role="listitem" class="inside-border" tabindex="0" style="width: 270px;" data-slick-index="0" aria-hidden="false">
+                    <a href="calendar.html" class="game-mini-card w-inline-block" tabindex="0">
+                        <div class="game-mini-card_header">
+                            <div class="game-mini-card_date">
+                                <div class="date-component text-color-smoke dayclass">World Champs</div>
+                            </div>
+                            <div class="game-mini-card_tournament">
+                                <div class="text-style-xs is-inline">Egypt, Cairo</div>
+                                <div class="text-style-xs is-inline">29th December or smt</div>
+                            </div>
+                        </div>
+                        <div class="game-mini-card_team_wrapper">
+                            <div class="game-mini-card_team">
+                                <div class="placement">
+                                    <img src="Static/Images/Medals/Gold_medal.png" alt="1st Place" class="placement-icon">
+                                    <div class="placement-text">1st Place</div>
+                                </div>
+                                <div class="placement">
+                                    <img src="Static/Images/Medals/Silver_Medal.png" alt="2nd Place" class="placement-icon">
+                                    <div class="placement-text">2nd Place</div>
+                                </div>
+                                <div class="placement">
+                                    <img src="Static/Images/Medals/Bronze_Medal.png" alt="3rd Place" class="placement-icon">
+                                    <div class="placement-text">3rd Place</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div role="listitem" class="inside-border" tabindex="0" style="width: 270px;" data-slick-index="0" aria-hidden="false">
+                    <a href="calendar.html" class="game-mini-card w-inline-block" tabindex="0">
+                        <div class="game-mini-card_header">
+                            <div class="game-mini-card_date">
+                                <div class="date-component text-color-smoke dayclass">World Champs</div>
+                            </div>
+                            <div class="game-mini-card_tournament">
+                                <div class="text-style-xs is-inline">Egypt, Cairo</div>
+                                <div class="text-style-xs is-inline">29th December or smt</div>
+                            </div>
+                        </div>
+                        <div class="game-mini-card_team_wrapper">
+                            <div class="game-mini-card_team">
+                                <div class="placement">
+                                    <img src="Static/Images/Medals/Gold_medal.png" alt="1st Place" class="placement-icon">
+                                    <div class="placement-text">1st Place</div>
+                                </div>
+                                <div class="placement">
+                                    <img src="Static/Images/Medals/Silver_Medal.png" alt="2nd Place" class="placement-icon">
+                                    <div class="placement-text">2nd Place</div>
+                                </div>
+                                <div class="placement">
+                                    <img src="Static/Images/Medals/Bronze_Medal.png" alt="3rd Place" class="placement-icon">
+                                    <div class="placement-text">3rd Place</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Add more mini-cards here if needed -->
             </div>
-            <div role="listitem" class="inside-border" tabindex="0" style="width: 270px;" data-slick-index="0" aria-hidden="false">
-                <a href="calendar.html" class="game-mini-card w-inline-block" tabindex="0">
-                    <div class="game-mini-card_header">
-                        <div class="game-mini-card_date">
-                            <div class="date-component text-color-smoke dayclass">World Champs</div>
-                        </div>
-                        <div class="game-mini-card_tournament">
-                            <div class="text-style-xs is-inline">Egypt, Cairo</div>
-                            <div class="text-style-xs is-inline">29th december or smt</div>
-                        </div>
-                    </div>
-                    <div class="game-mini-card_team_wrapper">
-                        <div class="game-mini-card_team">
-                            <div class="team-wrapper">
-                                <img alt="" loading="lazy" src="https://assets-global.website-files.com/651b1b659c7acecc2a62695f/65c48122e8fbac9c3026f31e_652f767fdcea54fad20825a2_Team%253DPuntarenas.png" class="team-icon">
-                                <div class="game-mini-card_team_name">Egypt</div>
-                            </div>
-                            <div class="game-mini-card_score">--</div>
-                        </div>
-                        <div class="game-mini-card_team">
-                            <div class="team-wrapper">
-                                <img alt="" loading="lazy" src="https://assets-global.website-files.com/651b1b659c7acecc2a62695f/652f7a22db673024d849c448_652f766a157b6ad08523ef70_Team%253DSaprissa.png" class="team-icon">
-                                <div class="game-mini-card_team_name">France</div>
-                            </div>
-                            <div class="game-mini-card_score">--</div>
-                        </div>
-                    </div>
-                </a>
-            </div>  
-            <div role="listitem" class="inside-border" tabindex="0" style="width: 270px;" data-slick-index="0" aria-hidden="false">
-                <a href="calendar.html" class="game-mini-card w-inline-block" tabindex="0">
-                    <div class="game-mini-card_header">
-                        <div class="game-mini-card_date">
-                            <div class="date-component text-color-smoke dayclass">World Champs</div>
-                        </div>
-                        <div class="game-mini-card_tournament">
-                            <div class="text-style-xs is-inline">Egypt, Cairo</div>
-                            <div class="text-style-xs is-inline">29th december or smt</div>
-                        </div>
-                    </div>
-                    <div class="game-mini-card_team_wrapper">
-                        <div class="game-mini-card_team">
-                            <div class="team-wrapper">
-                                <img alt="" loading="lazy" src="https://assets-global.website-files.com/651b1b659c7acecc2a62695f/65c48122e8fbac9c3026f31e_652f767fdcea54fad20825a2_Team%253DPuntarenas.png" class="team-icon">
-                                <div class="game-mini-card_team_name">Egypt</div>
-                            </div>
-                            <div class="game-mini-card_score">--</div>
-                        </div>
-                        <div class="game-mini-card_team">
-                            <div class="team-wrapper">
-                                <img alt="" loading="lazy" src="https://assets-global.website-files.com/651b1b659c7acecc2a62695f/652f7a22db673024d849c448_652f766a157b6ad08523ef70_Team%253DSaprissa.png" class="team-icon">
-                                <div class="game-mini-card_team_name">France</div>
-                            </div>
-                            <div class="game-mini-card_score">--</div>
-                        </div>
-                    </div>
-                </a>
-            </div>            
-        </div>
-        <button id="cycle-match-btn">Next Match</button>
-        <!-- Your existing match content -->
+            <button id="cycle-match-btn">Next Match</button>
         </section>     
     </main>
 
@@ -153,9 +151,9 @@
             <li>&copy; 2024 Fencing Hub. All rights reserved.</li>
         </ul>
         <div class="social-media">
-            <a href="#"><img src="/Images/Logos/Facebook.png" alt="Facebook"></a>
-            <a href="#"><img src="/Images/Logos/X.png" alt="Twitter"></a>
-            <a href="#"><img src="/Images/Logos/Insta.png" alt="Instagram"></a>
+            <a href="#"><img src="Static/Images/Logos/Facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="Static/Images/Logos/X.png" alt="Twitter"></a>
+            <a href="#"><img src="Static/Images/Logos/Insta.png" alt="Instagram"></a>
         </div>
     </footer>
 </body>

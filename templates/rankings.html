@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rankings - Fencing Hub</title>
     <link rel="stylesheet" href="/Static/styles.css">
-    <link rel="icon" type="image/png" href="/Images/Logos/Logo.png">
+    <link rel="icon" type="image/png" href="Static/Images/Logos/Logo.png">
 </head>
 <body id="rankings-page">
+    {% block content %}
         <nav class="navbar">
-            <img src="/Images/Logos/Logo_removed.png" alt="Fencing Hub Logo" class="logo-img">
+            <img src="Static/Images/Logos/Logo_removed.png" alt="Fencing Hub Logo" class="logo-img">
             <ul class="menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="rankings.html">Rankings</a></li>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/rankings">Rankings</a></li>
                 <li class="dropdown">
                     <a href="events.html">Events ▼</a>
                     <div class="dropdown-content">
@@ -55,7 +56,7 @@
         </div>        
         <section class="leaderboard">
             <div class="leader">
-                <img src="/Images/Fencing-background.jpeg" alt="KONG Man Wai Vivian">
+                <img src="Static/Images/Fencing-background.jpeg" alt="KONG Man Wai Vivian">
                 <div class="details">
                     <h2>2</h2>
                     <h3>KONG Man Wai Vivian</h3>
@@ -63,7 +64,7 @@
                 </div>
             </div>
             <div class="leader">
-                <img src="/Images/Fencing-background.jpeg" alt="CANDASSAMY Marie-Florence">
+                <img src="Static/Images/Fencing-background.jpeg" alt="CANDASSAMY Marie-Florence">
                 <div class="details">
                     <h2>1</h2>
                     <h3>CANDASSAMY Marie-Florence</h3>
@@ -71,7 +72,7 @@
                 </div>
             </div>
             <div class="leader">
-                <img src="/Images/Fencing-background.jpeg" alt="SONG Sera">
+                <img src="Static/Images/Fencing-background.jpeg" alt="SONG Sera">
                 <div class="details">
                     <h2>3</h2>
                     <h3>SONG Sera</h3>
@@ -94,33 +95,72 @@
                 </thead>
                 <tbody>
                     <!-- Sample data, replace with actual data -->
+                    {% for fencer in Mepee %}
                     <tr data-weapon="epee" data-gender="male">
-                        <td>1</td>
-                        <td>John Doe</td>
-                        <td>USA</td>
+                        <td>{{ fencer[11] }}</td>
+                        <td>{{ fencer[1] }} {{ fencer[2] }}</td>
+                        <td>{{ fencer[4] }}</td>
                         <td>Épée</td>
                         <td>Male</td>
-                        <td>Right</td>
-                        <td>25</td>
+                        <td>{{ fencer[10] }}</td>
+                        <td>{{ fencer[7] }}</td>
                     </tr>
-                    <tr data-weapon="foil" data-gender="female">
-                        <td>2</td>
-                        <td>Jane Smith</td>
-                        <td>UK</td>
-                        <td>Foil</td>
-                        <td>Female</td>
-                        <td>Left</td>
-                        <td>23</td>
-                    </tr>
-                    <tr data-weapon="sabre" data-gender="male">
-                        <td>3</td>
-                        <td>Mike Johnson</td>
-                        <td>Canada</td>
-                        <td>Sabre</td>
+                    {% endfor %}
+                    {% for fencer in Mfoil %}
+                    <tr data-weapon="foil" data-gender="male">
+                        <td>{{ fencer[11] }}</td>
+                        <td>{{ fencer[1] }} {{ fencer[2] }}</td>
+                        <td>{{ fencer[4] }}</td>
+                        <td>{{ fencer[9] }}</td>
                         <td>Male</td>
-                        <td>Right</td>
-                        <td>28</td>
+                        <td>{{ fencer[10] }}</td>
+                        <td>{{ fencer[7] }}</td>
                     </tr>
+                    {% endfor %}
+                    {% for fencer in Msabre %}
+                    <tr data-weapon="sabre" data-gender="male">
+                        <td>{{ fencer[11] }}</td>
+                        <td>{{ fencer[1] }} {{ fencer[2] }}</td>
+                        <td>{{ fencer[4] }}</td>
+                        <td>{{ fencer[9] }}</td>
+                        <td>Male</td>
+                        <td>{{ fencer[10] }}</td>
+                        <td>{{ fencer[7] }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% for fencer in Fepee %}
+                    <tr data-weapon="epee" data-gender="female">
+                        <td>{{ fencer[11] }}</td>
+                        <td>{{ fencer[1] }} {{ fencer[2] }}</td>
+                        <td>{{ fencer[4] }}</td>
+                        <td>Épée</td>
+                        <td>Male</td>
+                        <td>{{ fencer[10] }}</td>
+                        <td>{{ fencer[7] }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% for fencer in Ffoil %}
+                    <tr data-weapon="foil" data-gender="female">
+                        <td>{{ fencer[11] }}</td>
+                        <td>{{ fencer[1] }} {{ fencer[2] }}</td>
+                        <td>{{ fencer[4] }}</td>
+                        <td>{{ fencer[9] }}</td>
+                        <td>Male</td>
+                        <td>{{ fencer[10] }}</td>
+                        <td>{{ fencer[7] }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% for fencer in Fsabre %}
+                    <tr data-weapon="sabre" data-gender="female">
+                        <td>{{ fencer[11] }}</td>
+                        <td>{{ fencer[1] }} {{ fencer[2] }}</td>
+                        <td>{{ fencer[4] }}</td>
+                        <td>{{ fencer[9] }}</td>
+                        <td>{{ fencer[6] }}</td>
+                        <td>{{ fencer[10] }}</td>
+                        <td>{{ fencer[7] }}</td>
+                    </tr>
+                    {% endfor %}
                     <!-- Add more rows as needed -->
                 </tbody>
             </table>
@@ -131,9 +171,9 @@
             <li>&copy; 2024 Fencing Hub. All rights reserved.</li>
         </ul>
         <div class="social-media">
-            <a href="#"><img src="/Images/Logos/Facebook.png" alt="Facebook"></a>
-            <a href="#"><img src="/Images/Logos/X.png" alt="Twitter"></a>
-            <a href="#"><img src="/Images/Logos/Insta.png" alt="Instagram"></a>
+            <a href="#"><img src="Static/Images/Logos/Facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="Static/Images/Logos/X.png" alt="Twitter"></a>
+            <a href="#"><img src="Static/Images/Logos/Insta.png" alt="Instagram"></a>
         </div>
     </footer>
     <script>
@@ -156,5 +196,6 @@
             });
         }
     </script>
+    {% endblock %}
 </body>
 </html>
