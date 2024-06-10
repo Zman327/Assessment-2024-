@@ -180,3 +180,40 @@ function filterRankings() {
       }
   });
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  renderCalendar();
+
+  const monthSelector = document.getElementById("month");
+  const yearSelector = document.getElementById("year");
+
+  monthSelector.addEventListener("change", renderCalendar);
+  yearSelector.addEventListener("change", renderCalendar);
+});
+
+function renderCalendar() {
+  const tableBody = document.querySelector("#calendar tbody");
+  tableBody.innerHTML = "";
+
+  const month = parseInt(document.getElementById("month").value);
+  const year = parseInt(document.getElementById("year").value);
+
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const firstDayOfMonth = new Date(year, month, 1).getDay();
+
+  let date = 1;
+  for (let i = 0; i < 6; i++) {
+      const row = tableBody.insertRow();
+      for (let j = 0; j < 7; j++) {
+          const cell = row.insertCell();
+          if (i === 0 && j < firstDayOfMonth) {
+              cell.textContent = "";
+          } else if (date > daysInMonth) {
+              cell.textContent = "";
+          } else {
+              cell.textContent = date;
+              date++;
+          }
+      }
+  }
+}

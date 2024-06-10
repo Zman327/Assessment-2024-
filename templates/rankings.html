@@ -7,78 +7,84 @@
     <link rel="stylesheet" href="/Static/styles.css">
     <link rel="icon" type="image/png" href="Static/Images/Logos/Logo.png">
 </head>
-<body id="rankings-page">
+<body id="rankings-page" style="background: url('Static/Images/Background.jpeg') no-repeat center; background-size: cover;"></body>
     {% block content %}
-        <nav class="navbar">
-            <img src="Static/Images/Logos/Logo_removed.png" alt="Fencing Hub Logo" class="logo-img">
-            <ul class="menu">
-                <li><a href="/home">Home</a></li>
-                <li><a href="/rankings">Rankings</a></li>
-                <li class="dropdown">
-                    <a href="events.html">Events ▼</a>
-                    <div class="dropdown-content">
-                        <a href="calendar.html">Calendar</a>
-                        <a href="#">Results</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Information ▼</a>
-                    <div class="dropdown-content">
-                        <a href="about_fencing.html">About Fencing</a>
-                        <a href="fencing_stories.html">Stories</a>
-                        <a href="about_us.html">About Us</a>
-                    </div>
-                </li>
-            </ul>
-            <div class="btns">
-                <button onclick="window.location.href='Menu.html'">Contact</button>
-            </div>
-        </nav>
+    <nav class="navbar">
+        <img src="Static/Images/Logos/Logo_removed.png" alt="Fencing Hub Logo" class="logo-img">
+        <ul class="menu">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/rankings">Rankings</a></li>
+            <li class="dropdown">
+                <a href="events.html">Events ▼</a>
+                <div class="dropdown-content">
+                    <a href="/calendar">Calendar</a>
+                    <a href="#">Results</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#">Information ▼</a>
+                <div class="dropdown-content">
+                    <a href="about_fencing.html">About Fencing</a>
+                    <a href="fencing_stories.html">Stories</a>
+                    <a href="about_us.html">About Us</a>
+                </div>
+            </li>
+        </ul>
+        <div class="btns">
+            <button onclick="window.location.href='Menu.html'">Contact</button>
+        </div>
+    </nav>
     <main class="main_container">
         <h1>Rankings & Athletes</h1>
         <div class="selectors">
             <div class="selector-group">
                 <div class="selector-label">Weapon</div>
                 <div id="weaponSelector">
-                    <label for="epee"><input type="checkbox" id="epee" value="epee" onchange="filterRankings()"> Épée</label>
-                    <label for="foil"><input type="checkbox" id="foil" value="foil" onchange="filterRankings()"> Foil</label>
-                    <label for="sabre"><input type="checkbox" id="sabre" value="sabre" onchange="filterRankings()"> Sabre</label>
+                    <label for="epee"><input type="radio" name="weapon" id="epee" value="epee" onchange="filterRankings()" checked> Épée</label>
+                    <label for="foil"><input type="radio" name="weapon" id="foil" value="foil" onchange="filterRankings()"> Foil</label>
+                    <label for="sabre"><input type="radio" name="weapon" id="sabre" value="sabre" onchange="filterRankings()"> Sabre</label>
                 </div>
             </div>
             <div class="vertical-line"></div>
             <div class="selector-group">
                 <div class="selector-label">Gender</div>
                 <div id="genderSelector">
-                    <label for="male"><input type="checkbox" id="male" value="male" onchange="filterRankings()"> Male</label>
-                    <label for="female"><input type="checkbox" id="female" value="female" onchange="filterRankings()"> Female</label>
+                    <label for="male"><input type="radio" name="gender" id="male" value="male" onchange="filterRankings()" checked> Male</label>
+                    <label for="female"><input type="radio" name="gender" id="female" value="female" onchange="filterRankings()"> Female</label>
                 </div>
             </div>
-        </div>        
+        </div>
         <section class="leaderboard">
-            <div class="leader">
-                <img src="Static/Images/Fencing-background.jpeg" alt="KONG Man Wai Vivian">
+            {% if male_fencers|length > 0 %}
+            <div id="leader2" class="leader">
+                <img src="data:image/png;base64,{{ male_fencers[2][3] }}" alt="Fencer 2">
                 <div class="details">
                     <h2>2</h2>
-                    <h3>KONG Man Wai Vivian</h3>
+                    <h3>Fencer 2</h3>
                     <p>Nationality</p>
                 </div>
             </div>
-            <div class="leader">
-                <img src="Static/Images/Fencing-background.jpeg" alt="CANDASSAMY Marie-Florence">
+            {% endif %}
+            {% if male_fencers|length > 1 %}
+            <div id="leader1" class="leader">
+                <img src="data:image/png;base64,{{ male_fencers[1][3] }}" alt="Fencer 1">
                 <div class="details">
-                    <h2>1</h2>
-                    <h3>CANDASSAMY Marie-Florence</h3>
+                    <h2>🥇1🥇</h2>
+                    <h3>Fencer 1</h3>
                     <p>Nationality</p>
                 </div>
             </div>
-            <div class="leader">
-                <img src="Static/Images/Fencing-background.jpeg" alt="SONG Sera">
+            {% endif %}
+            {% if male_fencers|length > 2 %}
+            <div id="leader3" class="leader">
+                <img src="data:image/png;base64,{{ male_fencers[3][3] }}" alt="Fencer 3">
                 <div class="details">
-                    <h2>3</h2>
-                    <h3>SONG Sera</h3>
+                    <h2>3</h3>
+                    <h3>Fencer 3</h3>
                     <p>Nationality</p>
                 </div>
             </div>
+            {% endif %}
         </section>
         <section class="container">
             <table id="rankingsTable">
@@ -94,14 +100,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Sample data, replace with actual data -->
                     {% for fencer in Mepee %}
                     <tr data-weapon="epee" data-gender="male">
                         <td>{{ fencer[11] }}</td>
                         <td>{{ fencer[1] }} {{ fencer[2] }}</td>
                         <td>{{ fencer[4] }}</td>
                         <td>Épée</td>
-                        <td>Male</td>
+                        <td>{{ fencer[6] }}</td>
                         <td>{{ fencer[10] }}</td>
                         <td>{{ fencer[7] }}</td>
                     </tr>
@@ -112,7 +117,7 @@
                         <td>{{ fencer[1] }} {{ fencer[2] }}</td>
                         <td>{{ fencer[4] }}</td>
                         <td>{{ fencer[9] }}</td>
-                        <td>Male</td>
+                        <td>{{ fencer[6] }}</td>
                         <td>{{ fencer[10] }}</td>
                         <td>{{ fencer[7] }}</td>
                     </tr>
@@ -123,7 +128,7 @@
                         <td>{{ fencer[1] }} {{ fencer[2] }}</td>
                         <td>{{ fencer[4] }}</td>
                         <td>{{ fencer[9] }}</td>
-                        <td>Male</td>
+                        <td>{{ fencer[6] }}</td>
                         <td>{{ fencer[10] }}</td>
                         <td>{{ fencer[7] }}</td>
                     </tr>
@@ -134,7 +139,7 @@
                         <td>{{ fencer[1] }} {{ fencer[2] }}</td>
                         <td>{{ fencer[4] }}</td>
                         <td>Épée</td>
-                        <td>Male</td>
+                        <td>{{ fencer[6] }}</td>
                         <td>{{ fencer[10] }}</td>
                         <td>{{ fencer[7] }}</td>
                     </tr>
@@ -145,7 +150,7 @@
                         <td>{{ fencer[1] }} {{ fencer[2] }}</td>
                         <td>{{ fencer[4] }}</td>
                         <td>{{ fencer[9] }}</td>
-                        <td>Male</td>
+                        <td>{{ fencer[6] }}</td>
                         <td>{{ fencer[10] }}</td>
                         <td>{{ fencer[7] }}</td>
                     </tr>
@@ -161,40 +166,132 @@
                         <td>{{ fencer[7] }}</td>
                     </tr>
                     {% endfor %}
-                    <!-- Add more rows as needed -->
                 </tbody>
             </table>
-        </section>
-    </main>
-    <footer>
-        <ul>
+            <div class="pagination">
+                <button id="prevPage" onclick="prevPage()" disabled>&laquo; Previous</button>
+                <button id="nextPage" onclick="nextPage()">Next &raquo;</button>
+            </div>            
+            </section>
+            </main>
+            <footer>
+            <ul>
             <li>&copy; 2024 Fencing Hub. All rights reserved.</li>
-        </ul>
-        <div class="social-media">
+            </ul>
+            <div class="social-media">
             <a href="#"><img src="Static/Images/Logos/Facebook.png" alt="Facebook"></a>
             <a href="#"><img src="Static/Images/Logos/X.png" alt="Twitter"></a>
             <a href="#"><img src="Static/Images/Logos/Insta.png" alt="Instagram"></a>
-        </div>
-    </footer>
+            </div>
+            </footer>
+        </section>
+    </main>
     <script>
         function filterRankings() {
-            const selectedWeapons = Array.from(document.querySelectorAll('#weaponSelector input:checked')).map(checkbox => checkbox.value);
-            const selectedGenders = Array.from(document.querySelectorAll('#genderSelector input:checked')).map(checkbox => checkbox.value);
-            const rows = document.querySelectorAll('#rankingsTable tbody tr');
+            const selectedWeapon = document.querySelector('#weaponSelector input:checked').value;
+            const selectedGender = document.querySelector('#genderSelector input:checked').value;
 
-            rows.forEach(row => {
-                const rowWeapon = row.getAttribute('data-weapon');
-                const rowGender = row.getAttribute('data-gender');
-                const weaponMatch = selectedWeapons.length === 0 || selectedWeapons.includes(rowWeapon);
-                const genderMatch = selectedGenders.length === 0 || selectedGenders.includes(rowGender);
+            const table = document.getElementById('rankingsTable');
+            const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+            const filteredRows = [];
 
-                if (weaponMatch && genderMatch) {
+
+            for (let row of rows) {
+                const weapon = row.getAttribute('data-weapon');
+                const gender = row.getAttribute('data-gender');
+
+                if (weapon === selectedWeapon && gender === selectedGender) {
+                    filteredRows.push(row);
                     row.style.display = '';
                 } else {
                     row.style.display = 'none';
                 }
-            });
+            }
+
+            // Update leaderboards
+            const leader1 = document.getElementById('leader1');
+            const leader2 = document.getElementById('leader2');
+            const leader3 = document.getElementById('leader3');
+
+            function updateLeader(leader, row) {
+                const cells = row.getElementsByTagName('td');
+                const imagePath = row.getAttribute('data-image');
+                leader.querySelector('h3').textContent = `${cells[1].textContent}`;
+                leader.querySelector('p').textContent = `${cells[2].textContent}`;
+                leader.querySelector('img').src = imagePath;
+            }
+
+            if (filteredRows.length > 0) {
+                updateLeader(leader1, filteredRows[0]);
+                leader1.style.display = 'block';
+            } else {
+                leader1.style.display = 'none';
+            }
+
+            if (filteredRows.length > 1) {
+                updateLeader(leader2, filteredRows[1]);
+                leader2.style.display = 'block';
+            } else {
+                leader2.style.display = 'none';
+            }
+
+            if (filteredRows.length > 2) {
+                updateLeader(leader3, filteredRows[2]);
+                leader3.style.display = 'block';
+            } else {
+                leader3.style.display = 'none';
+            }
         }
+        
+        const rowsPerPage = 10;
+        let currentPage = 1;
+
+        function paginateTable() {
+            const table = document.getElementById('rankingsTable');
+            const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+            const totalRows = rows.length;
+            const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+        // Hide all rows
+        for (let i = 0; i < totalRows; i++) {
+            rows[i].style.display = 'none';
+        }
+
+        // Show rows for the current page
+        const start = (currentPage - 1) * rowsPerPage;
+        const end = Math.min(start + rowsPerPage, totalRows);
+        for (let i = start; i < end; i++) {
+            rows[i].style.display = '';
+        }
+
+        // Enable/disable pagination buttons
+        document.getElementById('prevPage').disabled = currentPage === 1;
+        document.getElementById('nextPage').disabled = currentPage === totalPages;
+        }
+
+        function nextPage() {
+            const table = document.getElementById('rankingsTable');
+            const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+            const totalRows = rows.length;
+            const totalPages = Math.ceil(totalRows / rowsPerPage);
+
+        if (currentPage < totalPages) {
+            currentPage++;
+            paginateTable();
+        }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                paginateTable();
+            }
+        }
+
+        window.onload = function() {
+           paginateTable();
+            filterRankings(); // Call filterRankings() after pagination to show filtered rows
+        };
     </script>
     {% endblock %}
 </body>

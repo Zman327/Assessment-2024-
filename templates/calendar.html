@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fencing Hub</title>
+    <title>Fencing Hub - Events Calendar</title>
     <link rel="stylesheet" href="/Static/styles.css">
-    <!-- Add favicon -->
-    <link rel="icon" type="image/png" href="Static/Images/Logo.png">
+    <link rel="icon" type="image/png" href="Static/Images/Logos/Logo.png">
 </head>
 <body id="rankings-page">
     <header>
         <nav class="navbar">
             <img src="Static/Images/Logos/Logo_removed.png" alt="Logo" class="logo-img">
             <ul class="menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="rankings.html">Rankings</a></li>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/rankings">Rankings</a></li>
                 <li class="dropdown">
-                    <a href="events.html">Events ▼</a>
+                    <a href="#">Events ▼</a>
                     <div class="dropdown-content">
-                        <a href="calendar.html">Calendar</a>
+                        <a href="/calendar">Calendar</a>
                         <a href="#">Results</a>
                     </div>
                 </li>
@@ -36,43 +35,53 @@
             </div>
         </nav>
     </header>
-</head>
-<body>
-<div class="container">
-    <h1>Events Calendar</h1>
-    <div class="selectors">
-        <label for="month">Select Month:</label>
-        <select id="month">
-            <option value="january">January</option>
-            <option value="february">February</option>
-            <option value="march">March</option>
-            <!-- Add other months as needed -->
-        </select>
-        <label for="year">Select Year:</label>
-        <select id="year">
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
-            <!-- Add other years as needed -->
-        </select>
+    <div class="container">
+        <h1>Events Calendar</h1>
+        <div class="selectors">
+            <div class="selector-group">
+                <label for="month" class="selector-label">Select Month:</label>
+                <select id="month">
+                    <option value="0">January</option>
+                    <option value="1">February</option>
+                    <option value="2">March</option>
+                    <option value="3">April</option>
+                    <option value="4">May</option>
+                    <option value="5">June</option>
+                    <option value="6">July</option>
+                    <option value="7">August</option>
+                    <option value="8">September</option>
+                    <option value="9">October</option>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                </select>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="selector-group">
+                <label for="year" class="selector-label">Select Year:</label>
+                <select id="year">
+                    <option value="2022">2023</option>
+                    <option value="2023">2024</option>
+                    <option value="2024">2025</option>
+                </select>
+            </div>
+        </div>
+        <table id="calendar">
+            <thead>
+                <tr>
+                    <th>Sunday</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Calendar days will be generated dynamically using JavaScript -->
+            </tbody>
+        </table>
     </div>
-    <table id="calendar">
-        <thead>
-            <tr>
-                <th>Sunday</th>
-                <th>Monday</th>
-                <th>Tuesday</th>
-                <th>Wednesday</th>
-                <th>Thursday</th>
-                <th>Friday</th>
-                <th>Saturday</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Calendar days will be generated dynamically using JavaScript -->
-        </tbody>
-    </table>
-</div>
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
