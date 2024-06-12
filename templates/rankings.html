@@ -69,7 +69,7 @@
             <div id="leader1" class="leader">
                 <img src="data:image/png;base64,{{ male_fencers[1][3] }}" alt="Fencer 1">
                 <div class="details">
-                    <h2>🥇1🥇</h2>
+                    <h2>1</h2>
                     <h3>Fencer 1</h3>
                     <p>Nationality</p>
                 </div>
@@ -194,7 +194,6 @@
             const table = document.getElementById('rankingsTable');
             const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
             const filteredRows = [];
-
 
             for (let row of rows) {
                 const weapon = row.getAttribute('data-weapon');

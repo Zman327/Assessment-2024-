@@ -27,12 +27,6 @@ def get_fencers_with_images():
 def homepage():
     return render_template('index.html')
 
-
-@app.route('/calendar')
-def calendarpage():
-    return render_template('calendar.html')
-
-
 @app.route('/events')
 def eventspage():
     return render_template('events.html')
@@ -42,6 +36,10 @@ def eventspage():
 def aboutfencingpage():
     return render_template('about_fencing.html')
 
+@app.route('/calendar')
+def calendarpage():
+    events = do_sql("SELECT * FROM Male_Events ORDER BY start_date ASC")
+    return render_template('calendar.html', events=events)
 
 @app.route('/rankings')
 def rankingpage():

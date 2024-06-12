@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="/Static/styles.css">
     <link rel="icon" type="image/png" href="Static/Images/Logos/Logo.png">
 </head>
-<body id="rankings-page">
-    <header>
+<body id="rankings-page" style="background: url('Static/Images/Background.jpeg') no-repeat center; background-size: cover;"></body>
+    {% block content %}
         <nav class="navbar">
             <img src="Static/Images/Logos/Logo_removed.png" alt="Logo" class="logo-img">
             <ul class="menu">
@@ -34,8 +34,7 @@
                 <button onclick="window.location.href='Menu.html'">Contact</button>
             </div>
         </nav>
-    </header>
-    <div class="container">
+    <main class="container">
         <h1>Events Calendar</h1>
         <div class="selectors">
             <div class="selector-group">
@@ -59,9 +58,9 @@
             <div class="selector-group">
                 <label for="year" class="selector-label">Select Year:</label>
                 <select id="year">
-                    <option value="2022">2023</option>
-                    <option value="2023">2024</option>
-                    <option value="2024">2025</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
                 </select>
             </div>
         </div>
@@ -81,7 +80,100 @@
                 <!-- Calendar days will be generated dynamically using JavaScript -->
             </tbody>
         </table>
-    </div>
-    <script src="script.js"></script>
+        <div id="event-list">
+            <h2>Upcoming Events</h2>
+            <ul id="events">
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Fencing Hub. All rights reserved.</p>
+        <div class="social-media">
+            <a href="#"><img src="Static/Images/Logos/Facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="Static/Images/Logos/X.png" alt="Twitter"></a>
+            <a href="#"><img src="Static/Images/Logos/Insta.png" alt="Instagram"></a>
+        </div>
+    </footer>
+    
+    <!-- JavaScript for Dynamic Calendar and Event List -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const monthSelect = document.getElementById('month');
+            const yearSelect = document.getElementById('year');
+            const calendarBody = document.querySelector('#calendar tbody');
+            const eventList = document.getElementById('events');
+
+            // events list
+            const events = [
+                { date: '2024-06-01', title: 'Fencing Championship'},
+                { date: '2024-06-15', title: 'Junior Fencing Tournament' },
+                { date: '2024-07-20', title: 'Summer Fencing Camp' },
+                // Add more events here
+            ];
+
+            const renderCalendar = (month, year) => {
+                // Clear the current calendar
+                calendarBody.innerHTML = '';
+
+                // Get the first day of the month and the number of days in the month
+                const firstDay = new Date(year, month).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+                // Fill the first row with empty cells up to the first day
+                let row = document.createElement('tr');
+                for (let i = 0; i < firstDay; i++) {
+                    let cell = document.createElement('td');
+                    row.appendChild(cell);
+                }
+
+                // Fill the rest of the days
+                for (let day = 1; day <= daysInMonth; day++) {
+                    if (row.children.length === 7) {
+                        // Add the row to the calendar and start a new one
+                        calendarBody.appendChild(row);
+                        row = document.createElement('tr');
+                    }
+                    let cell = document.createElement('td');
+                    cell.textContent = day;
+                    row.appendChild(cell);
+                }
+
+                // Add the last row to the calendar
+                calendarBody.appendChild(row);
+            };
+
+            const renderEvents = (month, year) => {
+                eventList.innerHTML = '';
+
+                events.forEach(event => {
+                    const eventDate = new Date(event.date);
+                    if (eventDate.getMonth() === month && eventDate.getFullYear() === year) {
+                        const li = document.createElement('li');
+                        li.textContent = `${eventDate.getDate()} ${monthSelect.options[month].text} ${year} - ${event.title}`;
+                        eventList.appendChild(li);
+                    }
+                });
+            };
+
+            const updateCalendarAndEvents = () => {
+                const selectedMonth = parseInt(monthSelect.value);
+                const selectedYear = parseInt(yearSelect.value);
+                renderCalendar(selectedMonth, selectedYear);
+                renderEvents(selectedMonth, selectedYear);
+            };
+
+            // Update calendar and events when selectors change
+            monthSelect.addEventListener('change', updateCalendarAndEvents);
+            yearSelect.addEventListener('change', updateCalendarAndEvents);
+
+            // Initialize calendar and events with current month and year
+            const today = new Date();
+            monthSelect.value = today.getMonth();
+            yearSelect.value = today.getFullYear();
+            renderCalendar(today.getMonth(), today.getFullYear());
+            renderEvents(today.getMonth(), today.getFullYear());
+        });
+    </script>
+    {% endblock %}
 </body>
 </html>

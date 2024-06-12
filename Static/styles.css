@@ -554,6 +554,7 @@ table th, table td {
 }
 table th {
     background-color: #f2f2f2;
+    color: #f2f2f2;
 }
 
 #rankings-page {
@@ -672,7 +673,7 @@ table th, table td {
 }
 
 table th {
-    background-color: #f2f2f2;
+    background-color: #003366;
 }
 
 .pagination {
@@ -700,4 +701,54 @@ table th {
     width: 100%; /* Adjust based on your design */
     height: 60%; /* Adjust based on your design */
     object-fit: cover; /* Ensure the image scales properly */
+}
+
+/* Calendar Table */
+#calendar {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+#calendar th, #calendar td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    width: 14.28%; /* 100% / 7 days */
+}
+
+#calendar th {
+    background-color: #003366;
+    color: white;
+}
+
+#calendar td {
+    background-color: #f9f9f9;
+}
+
+#calendar td:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+#event-list {
+    text-align: left;
+    margin-top: 30px;
+}
+
+#event-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#event-list li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 5px solid #0acac7;
+}
+
+#event-list li:hover {
+    background-color: #f1f1f1;
+    border-left-color: #0a8a8a;
 }
