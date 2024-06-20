@@ -414,6 +414,25 @@ body {
     padding: 8px 12px;
     font-size: 16px;
 }
+
+.selector-group {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.selector-group .selector-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.selector-group input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px; /* Adjust width as necessary */
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -751,4 +770,80 @@ table th {
 #event-list li:hover {
     background-color: #f1f1f1;
     border-left-color: #0a8a8a;
+}
+
+#calendar ul {
+    padding: 0;
+    list-style-type: none;
+    margin-top: 5px;
+}
+
+#calendar li {
+    font-size: 0.8em; /* Adjust the size as needed */
+    color: #0acac7; /* Set a color for event titles */
+}
+
+.form-section {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; /* Set max-width for the form */
+    text-align: center;
+}
+
+.form-section h1 {
+    margin-bottom: 20px;
+    color: #17706d; /* Adjust the color to match your theme */
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left; /* Align labels and inputs to the left */
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: calc(100% - 20px); /* Full width with padding adjustment */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding doesn't affect overall width */
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #0acac7;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0b9f9d;
+}
+
+.login-link {
+    margin-top: 15px;
+    color: #333;
+}
+
+.login-link a {
+    color: #0acac7;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
 }

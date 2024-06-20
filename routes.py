@@ -52,6 +52,13 @@ def rankingpage():
     male_fencers = get_fencers_with_images()
     return render_template('rankings.html', Fepee=Fepee, Ffoil=Ffoil, Fsabre=Fsabre, Mepee=Mepee, Mfoil=Mfoil, Msabre=Msabre, male_fencers=male_fencers)
 
+@app.route('/login')
+def loginpage():
+    return render_template('login.html')
+
+@app.route('/register')
+def registerpage():
+    return render_template('register.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
