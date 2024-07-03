@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 import sqlite3
 import base64
+import json
 
 app = Flask(__name__, template_folder='templates', static_folder='Static')
 
@@ -23,9 +24,11 @@ def get_fencers_with_images():
         fencers_with_images.append(fencer_with_image)
     return fencers_with_images
 
+
 @app.route('/home')
 def homepage():
     return render_template('index.html')
+
 
 @app.route('/events')
 def eventspage():
@@ -36,10 +39,12 @@ def eventspage():
 def aboutfencingpage():
     return render_template('about_fencing.html')
 
+
 @app.route('/calendar')
 def calendarpage():
-    events = do_sql("SELECT * FROM Male_Events ORDER BY start_date ASC")
-    return render_template('calendar.html', events=events)
+    events = do_sql("SELECT start_date,event_name FROM Male_Events ORDER BY start_date ASC")
+    return render_template('calendar.html', e=json.dumps(events))
+
 
 @app.route('/rankings')
 def rankingpage():
@@ -52,13 +57,16 @@ def rankingpage():
     male_fencers = get_fencers_with_images()
     return render_template('rankings.html', Fepee=Fepee, Ffoil=Ffoil, Fsabre=Fsabre, Mepee=Mepee, Mfoil=Mfoil, Msabre=Msabre, male_fencers=male_fencers)
 
+
 @app.route('/login')
 def loginpage():
     return render_template('login.html')
 
+
 @app.route('/register')
 def registerpage():
     return render_template('register.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)

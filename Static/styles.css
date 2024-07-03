@@ -447,12 +447,12 @@ table th {
 }
 
 /*body {
-    cursor: url('/Images/Cursor_icon.png') 15 15, auto;
+    cursor: url('Static/Images/icons8-cursor-32.png') 15 15, auto;
 }
 
 a:hover {
-    cursor: url('/Images/Cursor_icon.png') 15 15, auto;
-}*/
+    cursor: url('Static/Images/Cursor_hover.png') 15 15, auto;
+} */
 
 /* Keyframes for the cursor animation */
 @keyframes cursorAnimation {
@@ -462,7 +462,7 @@ a:hover {
     100% {
         transform: scale(1.5); /* Change the scale factor as needed */
     }
-}
+} 
 
 /* Split layout styles */
 .about-us {
@@ -542,13 +542,6 @@ footer .social-media img:hover {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 1);
-}
-
-.main_container {
-    max-width: 100%;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
 }
 
 h1 {
@@ -644,6 +637,16 @@ table th {
     background-color: var(--background-color);
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main_container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('Static/Images/Background.jpg') no-repeat center;
+    background-size: cover;
+    color: #333;
 }
 
 .selectors {
@@ -847,3 +850,4 @@ button[type="submit"]:hover {
 .login-link a:hover {
     text-decoration: underline;
 }
+

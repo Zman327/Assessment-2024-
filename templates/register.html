@@ -74,30 +74,47 @@
     </style>
 </head>
 <body id="register-page" style="background: url('Static/Images/Background.jpg') no-repeat center; background-size: cover;">
-    <main class="main_container">
+    <main class="main_container1">
         <section class="form-section">
             <h1>Register</h1>
-            <form action="/register" method="post">
+            <form id="registration-form" action="/register" method="post">
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
+                    <label for="username">Username*</label>
+                    <input type="text" id="username" name="username"  placeholder="Username" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
+                    <label for="password">Password*</label>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
                 </div>
                 <div class="form-group">
-                    <label for="confirm-password">Confirm Password</label>
-                    <input type="password" id="confirm-password" name="confirm-password" required>
+                    <label for="confirm-password">Confirm Password*</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password" required>
                 </div>
+                <div id="error-message" style="color: red; display: none;"></div>
                 <button type="submit">Register</button>
             </form>
             <p class="login-link">Already have an account? <a href="/login">Login here</a></p>
         </section>
     </main>
+
+    <script>
+        document.getElementById('registration-form').onsubmit = function(event) {
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirm-password').value;
+            var errorMessage = document.getElementById('error-message');
+
+            if (password !== confirmPassword) {
+                errorMessage.textContent = "Please make sure passwords match.";
+                errorMessage.style.display = "block";
+                event.preventDefault(); // Prevent form submission
+            } else {
+                errorMessage.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>

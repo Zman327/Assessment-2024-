@@ -104,13 +104,16 @@
             const eventList = document.getElementById('events');
 
             // events list
-            const events = [
+            var events = [
+                
                 { date: '2024-06-01', title: 'Fencing Championship'},
                 { date: '2024-06-15', title: 'Junior Fencing Tournament' },
                 { date: '2024-07-20', title: 'Summer Fencing Camp' },
                 // Add more events here
+                
             ];
 
+            console.log(events)
             const renderCalendar = (month, year) => {
                 // Clear the current calendar
                 calendarBody.innerHTML = '';
