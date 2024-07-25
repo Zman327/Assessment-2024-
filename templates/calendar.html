@@ -9,31 +9,31 @@
 </head>
 <body id="rankings-page" style="background: url('Static/Images/Background.jpg') no-repeat center; background-size: cover;"></body>
     {% block content %}
-        <nav class="navbar">
-            <img src="Static/Images/Logos/Logo_removed.png" alt="Logo" class="logo-img">
-            <ul class="menu">
-                <li><a href="/home">Home</a></li>
-                <li><a href="/rankings">Rankings</a></li>
-                <li class="dropdown">
-                    <a href="#">Events ▼</a>
-                    <div class="dropdown-content">
-                        <a href="/calendar">Calendar</a>
-                        <a href="#">Results</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Information ▼</a>
-                    <div class="dropdown-content">
-                        <a href="about_fencing.html">About Fencing</a>
-                        <a href="fencing_stories.html">Stories</a>
-                        <a href="about_us.html">About Us</a>
-                    </div>
-                </li>
-            </ul>
-            <div class="btns">
-                <button onclick="window.location.href='Menu.html'">Contact</button>
-            </div>
-        </nav>
+    <nav class="navbar">
+        <img src="Static/Images/Logos/Logo_removed.png" alt="Logo" class="logo-img">
+        <ul class="menu">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/rankings">Rankings</a></li>
+            <li class="dropdown">
+                <a href="/events">Events ▼</a>
+                <div class="dropdown-content">
+                    <a href="/calendar">Calendar</a>
+                    <a href="#">Results</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#">Information ▼</a>
+                <div class="dropdown-content">
+                    <a href="/about_fencing">About Fencing</a>
+                    <a href="/fencing_stories.html">Stories</a>
+                    <a href="/about_us.html">About Us</a>
+                </div>
+            </li>
+        </ul>
+        <div class="btns">
+            <button onclick="window.location.href='/login'">👤Log In</button>
+        </div>
+    </nav>
     <main class="container">
         <h1>Events Calendar</h1>
         <div class="selectors">
@@ -105,12 +105,11 @@
 
             // events list
             var events = [
-                
                 { date: '2024-06-01', title: 'Fencing Championship'},
                 { date: '2024-06-15', title: 'Junior Fencing Tournament' },
                 { date: '2024-07-20', title: 'Summer Fencing Camp' },
+
                 // Add more events here
-                
             ];
 
             console.log(events)

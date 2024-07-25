@@ -25,13 +25,13 @@
                     <a href="#">Information ▼</a>
                     <div class="dropdown-content">
                         <a href="/about_fencing">About Fencing</a>
-                        <a href="/fencing_stories.html">Stories</a>
-                        <a href="/about_us.html">About Us</a>
+                        <a href="/stories">Stories</a>
+                        <a href="/about_us">About Us</a>
                     </div>
                 </li>
             </ul>
             <div class="btns">
-                <button onclick="window.location.href='/login'">Log In</button>
+                <button onclick="window.location.href='/login'">👤Log In</button>
             </div>
         </nav>
     <video id="video-background" autoplay loop muted>
@@ -156,5 +156,15 @@
             <a href="#"><img src="Static/Images/Logos/Insta.png" alt="Instagram"></a>
         </div>
     </footer>
+<!-- Add this block where you want to display flash messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul>
+    {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
 </body>
 </html>
