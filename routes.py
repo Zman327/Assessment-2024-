@@ -62,6 +62,7 @@ def loginpage():
         if user:
             session['username'] = username
             flash("Login successful!", "success")
+            
             return redirect(url_for('homepage'))
         else:
             flash("Invalid username or password!", "error")
@@ -73,7 +74,7 @@ def loginpage():
 def logout():
     session.pop('username', None)
     flash("Logged out successfully!", "success")
-    return redirect(url_for('loginpage'))
+    return redirect(url_for('home'))
 
 
 def get_fencers_with_images():
@@ -82,14 +83,15 @@ def get_fencers_with_images():
     for fencer in fencers:
         fencer_with_image = list(fencer)
         if fencer_with_image[3]:  # Check if fencer_photo is not None
-            fencer_with_image[3] = base64.b64encode(fencer_with_image[3]).decode('utf-8')  # Encode image data to base64
-        fencers_with_images.append(fencer_with_image)
+            fencers_with_images.append(fencer_with_image)
     return fencers_with_images
 
 
 @app.route('/home')
 def homepage():
-    return render_template('index.html')
+    events = do_sql("SELECT * FROM Male_Events ORDER BY start_date ASC LIMIT 4")
+    logged_in = 'user_id' in session
+    return render_template('index.html', events=events, logged_in=logged_in)
 
 
 @app.route('/events')
@@ -104,10 +106,8 @@ def aboutfencingpage():
 
 @app.route('/calendar')
 def calendarpage():
-    events = do_sql("SELECT start_date, event_name FROM Male_Events ORDER BY start_date ASC")
-    # Convert the event dates to strings for JSON serialization
-    events = [{'date': event[0], 'title': event[1]} for event in events]
-    return render_template('calendar.html', events=json.dumps(events))
+    events = do_sql("SELECT * FROM Male_Events ORDER BY start_date ASC")
+    return render_template('calendar.html', events=events)
 
 
 @app.route('/rankings')
@@ -124,13 +124,26 @@ def rankingpage():
 
 @app.route('/stories')
 def storiespage():
-    return render_template('stories.html')
+    Mepee = do_sql("SELECT * FROM Male_Fencers WHERE weapon = 'Epee' ORDER BY rank ASC LIMIT 5")
+    Mfoil = do_sql("SELECT * FROM Male_Fencers WHERE weapon = 'Foil' ORDER BY rank ASC LIMIT 5")
+    Msabre = do_sql("SELECT * FROM Male_Fencers WHERE weapon = 'Sabre' ORDER BY rank ASC LIMIT 5")
+    Fepee = do_sql("SELECT * FROM Female_Fencers WHERE weapon = 'Epee' ORDER BY rank ASC LIMIT 5")
+    Ffoil = do_sql("SELECT * FROM Female_Fencers WHERE weapon = 'Foil' ORDER BY rank ASC LIMIT 5")
+    Fsabre = do_sql("SELECT * FROM Female_Fencers WHERE weapon = 'Sabre' ORDER BY rank ASC LIMIT 5")
+    return render_template('stories.html', Fepee=Fepee, Ffoil=Ffoil, Fsabre=Fsabre, Mepee=Mepee, Mfoil=Mfoil, Msabre=Msabre)
 
 
 @app.route('/about_us')
 def aboutuspage():
     return render_template('about_us.html')
 
+@app.route('/privacy_policy')
+def privacypage():
+    return render_template('privacy-policy.html')
+
+@app.route('/profile')
+def profilepage():
+    return render_template('profile.html')
 
 @app.errorhandler(404)
 def page_not_found(e):

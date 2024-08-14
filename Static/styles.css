@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
     background-color: #ffffff; /* Set a light background color */
 }
@@ -28,6 +29,10 @@ video {
 }
 
 .menu li a {
+    text-decoration: none;
+    color: #333;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
     position: relative;
 }
 
@@ -38,7 +43,7 @@ video {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #0acac7; 
+    background-color: #0088a9; 
     transition: width 0.7s ease; /* Animation transition */
 }
 
@@ -67,15 +72,8 @@ video {
     margin-right: 30px;
 }
 
-.menu li a {
-    text-decoration: none;
-    color: #333;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-}
-
 .menu li a:hover {
-    color: #17706d;
+    color: #0088a9;
 }
 
 .icons img {
@@ -106,7 +104,7 @@ main {
 }
 
 .dropdown-content a {
-    color: #0acac7; /* Set text color to light blue */
+    color: #0088a9; /* Set text color to light blue */
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -114,7 +112,7 @@ main {
 }
 
 .dropdown a:hover .dropdown-content{
-    color: #0acac7;
+    color: #0088a9;
 }
 
 .dropdown:hover .dropdown-content {
@@ -136,7 +134,7 @@ main {
 }
 
 .btns button:hover {
-    background-color: #0acac7;
+    background-color: #0088a9;
     color: #fff;
 }
 
@@ -391,12 +389,6 @@ video {
     background-color: #555; /* Change color on hover */
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
 .container {
     max-width: 800px;
     margin: 20px auto;
@@ -773,7 +765,7 @@ table th {
     background-color: #f9f9f9;
     padding: 10px;
     margin-bottom: 10px;
-    border-left: 5px solid #0acac7;
+    border-left: 5px solid #0088a9;
 }
 
 #event-list li:hover {
@@ -789,7 +781,7 @@ table th {
 
 #calendar li {
     font-size: 0.8em; /* Adjust the size as needed */
-    color: #0acac7; /* Set a color for event titles */
+    color: #0088a9; /* Set a color for event titles */
 }
 
 .form-section {
@@ -984,21 +976,6 @@ button[type="submit"]:hover {
     padding: 20px;
 }
 
-.card {
-    background-color: #333;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    width: 250px;
-    text-align: center;
-}
-
-.card img {
-    width: 100%;
-    height: auto;
-}
-
 .card h2 {
     font-size: 1.5em;
     margin: 10px 0;
@@ -1008,4 +985,190 @@ button[type="submit"]:hover {
 .card p {
     color: #ffffff;
     margin-bottom: 20px;
+}
+
+.story-content {
+    display: none;
+    margin-top: 10px;
+}
+
+.card.expanded .story-content {
+    display: block;
+}
+
+.card.expanded {
+    max-height: 400px; /* Adjust as necessary */
+    transition: max-height 0.5s ease-in-out;
+}
+
+.icons img {
+    width: 25px;
+    height: 25px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 230px;
+    text-align: left;
+    position: relative;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card h2 {
+    margin: 10px;
+    font-size: 18px;
+    color: #000;
+    text-align: center;
+}
+
+.card p {
+    margin: 10px;
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.expanded-card-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.expanded-card-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    position: relative;
+}
+
+.expanded-card-content img {
+    width: 50%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.expanded-card-content h2 {
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+.expanded-card-content p {
+    font-size: 16px;
+    color: #333;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.3s;
+}
+
+.close-button:hover {
+    color: #000;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flag-img {
+    position: absolute;
+    width: 300%;
+    height: auto;
+    opacity: 1.5;
+}
+
+.expanded-card-img {
+    position: relative;
+    width: 50%;
+    height: auto;
+    display: block;
+    z-index: 1;
+}
+
+#mySidenav a {
+    position: fixed;
+    left: -175px; /* Position them outside of the screen */
+    transition: 0.3s; 
+    padding: 15px; 
+    width: 200px; /* Set a specific width */
+    text-decoration: none; 
+    font-size: 20px; 
+    color: white; 
+    border-radius: 0 5px 5px 0; 
+  }
+  
+#mySidenav a:hover {
+    left: 0; 
+    background-color: #000000;
+    z-index: 1;
+}
+  
+#value {
+    top: 140px;
+    background-color: #ffffff;
+    z-index: 1;
+}
+  
+#traditional {
+    top: 200px;
+    background-color: #ffffff; 
+    z-index: 1;
+}
+  
+#gourmet {
+    top: 260px;
+    background-color: #ffffff; 
+    z-index: 1;
+}
+  
+html {
+ scroll-behavior: smooth;
 }

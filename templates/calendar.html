@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/Static/styles.css">
     <link rel="icon" type="image/png" href="Static/Images/Logos/Logo.png">
 </head>
-<body id="rankings-page" style="background: url('Static/Images/Background.jpg') no-repeat center; background-size: cover;"></body>
+<body id="rankings-page" style="background: url('Static/Images/Background.jpg') no-repeat center; background-size: cover;">
     {% block content %}
     <nav class="navbar">
         <img src="Static/Images/Logos/Logo_removed.png" alt="Logo" class="logo-img">
@@ -80,10 +80,20 @@
                 <!-- Calendar days will be generated dynamically using JavaScript -->
             </tbody>
         </table>
-        <div id="event-list">
-            <h2>Upcoming Events</h2>
-            <ul id="events">
-            </ul>
+        <div id="event-list" style="display: flex; justify-content: space-between;">
+            <div id="upcoming-events" style="width: 48%;">
+                <h2>Upcoming Events</h2>
+                <ul id="events">
+                    {% for event in events %}
+                    <li data-date="{{ event[2] }}">{{ event[1] }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div id="events-in-month" style="width: 48%;">
+                <h2>Events in Month</h2>
+                <ul id="filtered-events">
+                </ul>
+            </div>
         </div>
     </main>
     <footer>
@@ -101,37 +111,24 @@
             const monthSelect = document.getElementById('month');
             const yearSelect = document.getElementById('year');
             const calendarBody = document.querySelector('#calendar tbody');
-            const eventList = document.getElementById('events');
+            const filteredEventList = document.getElementById('filtered-events');
+            const upcomingEventList = document.getElementById('events');
+            const eventSection = document.getElementById('event-list');
 
-            // events list
-            var events = [
-                { date: '2024-06-01', title: 'Fencing Championship'},
-                { date: '2024-06-15', title: 'Junior Fencing Tournament' },
-                { date: '2024-07-20', title: 'Summer Fencing Camp' },
-
-                // Add more events here
-            ];
-
-            console.log(events)
             const renderCalendar = (month, year) => {
-                // Clear the current calendar
-                calendarBody.innerHTML = '';
+                calendarBody.innerHTML = ''; // Clear the current calendar
 
-                // Get the first day of the month and the number of days in the month
                 const firstDay = new Date(year, month).getDay();
                 const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-                // Fill the first row with empty cells up to the first day
                 let row = document.createElement('tr');
                 for (let i = 0; i < firstDay; i++) {
                     let cell = document.createElement('td');
                     row.appendChild(cell);
                 }
 
-                // Fill the rest of the days
                 for (let day = 1; day <= daysInMonth; day++) {
                     if (row.children.length === 7) {
-                        // Add the row to the calendar and start a new one
                         calendarBody.appendChild(row);
                         row = document.createElement('tr');
                     }
@@ -140,21 +137,27 @@
                     row.appendChild(cell);
                 }
 
-                // Add the last row to the calendar
                 calendarBody.appendChild(row);
             };
 
             const renderEvents = (month, year) => {
-                eventList.innerHTML = '';
+                filteredEventList.innerHTML = ''; // Clear previous event list
 
-                events.forEach(event => {
-                    const eventDate = new Date(event.date);
+                const eventsItems = upcomingEventList.querySelectorAll('li');
+                let eventsFound = false; // Flag to check if any events are found
+
+                eventsItems.forEach(event => {
+                    const eventDate = new Date(event.getAttribute('data-date'));
                     if (eventDate.getMonth() === month && eventDate.getFullYear() === year) {
                         const li = document.createElement('li');
-                        li.textContent = `${eventDate.getDate()} ${monthSelect.options[month].text} ${year} - ${event.title}`;
-                        eventList.appendChild(li);
+                        li.textContent = `${eventDate.getDate()} ${monthSelect.options[month].text} ${year} - ${event.textContent}`;
+                        filteredEventList.appendChild(li);
+                        eventsFound = true;
                     }
                 });
+
+                // Show or hide the event section based on whether events are found
+                document.getElementById('events-in-month').style.display = eventsFound ? 'block' : 'none';
             };
 
             const updateCalendarAndEvents = () => {
@@ -164,11 +167,9 @@
                 renderEvents(selectedMonth, selectedYear);
             };
 
-            // Update calendar and events when selectors change
             monthSelect.addEventListener('change', updateCalendarAndEvents);
             yearSelect.addEventListener('change', updateCalendarAndEvents);
 
-            // Initialize calendar and events with current month and year
             const today = new Date();
             monthSelect.value = today.getMonth();
             yearSelect.value = today.getFullYear();

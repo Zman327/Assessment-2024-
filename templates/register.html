@@ -3,118 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Fencing Hub</title>
-    <link rel="stylesheet" href="/Static/styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Fencing Hub - Register</title>
     <link rel="icon" type="image/png" href="Static/Images/Logos/Logo.png">
     <style>
-        /* Additional styles for the login page */
-        .login-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: url('Static/Images/Background.jpg') no-repeat center;
-            background-size: cover;
-            color: #333;
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          font-family: "Montserrat", sans-serif;
         }
 
-        .login-form {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            width: 300px;
+        body {
+          background: linear-gradient(135deg, #0088a9, #24252A);
+          color: #edf0f1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          padding: 20px;
+        }
+        
+        .input-box input:focus, .input-box input:valid {
+          border-color: #0088a9;
         }
 
-        .login-form h2 {
-            margin-bottom: 20px;
-            font-size: 24px;
+        .wrapper {
+          background-color: #2e2f34;
+          width: 420px;
+          margin: auto;
+          border-radius: 15px;
+          padding: 40px 50px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+          border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .login-form input[type="text"],
-        .login-form input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
+        .wrapper h1{
+          text-align: center;
+          font-size: 28px;
+          margin-bottom: 20px;
         }
 
-        .login-form button {
-            width: 100%;
-            padding: 10px;
-            margin: 20px 0;
-            border: none;
-            border-radius: 5px;
-            background-color: #0acac7;
-            color: #fff;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+        .input-box {
+          position: relative;
+          width: 100%;
+          height: 50px;
+          margin: 25px 0;
         }
 
-        .login-form button:hover {
-            background-color: #0a9b9a;
+        .input-box input {
+          width: 100%;
+          height: 100%;
+          background: transparent;
+          border: none;
+          outline: none;
+          border: 2px solid rgba(237, 240, 241, 0.2);
+          border-radius: 30px;
+          font-size: 16px;
+          padding: 15px 20px;
+          color: #edf0f1;
+        }
+        
+        .input-box input::placeholder {
+          color: rgba(237, 240, 241, 0.7);
         }
 
-        .login-form p {
-            margin-top: 20px;
+        .input-box i {
+          position: absolute;
+          right: 20px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 20px;
+          color: #edf0f1;
         }
 
-        .login-form p a {
-            color: #0acac7;
-            text-decoration: none;
+        .input-box p {
+          position: absolute;
+          font-weight: 200;
+          transform: translateY(-50%);
+          top: 50%;
+          left: 20px;
+          transition: all ease 0.3s;
+          pointer-events: none;
+          color: rgba(237, 240, 241, 0.9);
+        }
+        
+        .input-box input:focus + p,
+        .input-box input:valid + p {
+          top: -10px;
+          left: 15px;
+          font-size: 12px;
+          font-weight: 600;
+          color: rgba(237, 240, 241, 1);
+          background-color: #2e2f34;
+          padding: 0 5px;
         }
 
-        .login-form p a:hover {
-            text-decoration: underline;
+        .remember-forgot {
+          display: flex;
+          justify-content: space-between;
+          font-size: 14px;
+          margin: -10px 0 20px; 
         }
+
+        button {
+          width: 100%;
+          padding: 12px;
+          background-color: #0088a9;
+          border: none;
+          border-radius: 30px;
+          cursor: pointer;
+          font-weight: 600;
+          transition: background-color 0.3s ease;
+          box-shadow: 0 4px 10px rgba(0, 136, 169, 0.3);
+        }
+
+        button:hover {
+          background-color: #006f88;
+        }
+
+        .register-link {
+          text-align: center;
+          margin-top: 20px;
+        }
+
+        .register-link p a {
+          color: #0088a9;
+          font-weight: 600;
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+
+        .register-link p a:hover {
+          color: #006f88;
+        }
+
+        .error {
+          color: red;
+          display: none;
+          margin-bottom: 15px;
+        }
+        
+        .input-error {
+          border-color: red;
+        }
+
     </style>
 </head>
-<body id="register-page" style="background: url('Static/Images/Background.jpg') no-repeat center; background-size: cover;">
-    <main class="main_container1">
-        <section class="form-section">
-            <h1>Register</h1>
-            <form id="registration-form" action="/register" method="post">
-                <div class="form-group">
-                    <label for="username">Username*</label>
-                    <input type="text" id="username" name="username"  placeholder="Username" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email*</label>
-                    <input type="email" id="email" name="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password*</label>
-                    <input type="password" id="password" name="password" placeholder="Password" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirm-password">Confirm Password*</label>
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password" required>
-                </div>
-                <div id="error-message" style="color: red; display: none;"></div>
-                <button type="submit">Register</button>
-            </form>
-            <p class="login-link">Already have an account? <a href="/login">Login here</a></p>
-        </section>
-    </main>
+<body>
+    <div class="wrapper">
+        <form id="registration-form" method="POST">
+            <h1>Sign Up</h1>
+            <div class="input-box">
+                <input type="text" id="SignUp-username" name="username" required>
+                <p>Username</p>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="email" id="SignUp-email" name="email" required>
+                <p>Email</p>
+                <i class='bx bx-envelope' ></i>
+            </div>
+            <div class="input-box">
+                <input type="password" id="password" name="password" required>
+                <p>Password</p>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                <p>Password again</p>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            
+            <div class="remember-forgot">
+                <label>
+                    <p>By clicking register, you agree to our</p>
+                    <a href="/privacy_policy">Privacy Policy</a>
+                </label>
+            </div>
+            <div id="error-message" class="error">Please make sure passwords match.</div>
+            <button type="submit" class="login-submit">Register</button>
+
+            <div class="register-link">
+                <p>Already have an account? 
+                <a href="/login">Login here</a></p>
+            </div>
+        </form>
+    </div>
 
     <script>
         document.getElementById('registration-form').onsubmit = function(event) {
             var password = document.getElementById('password').value;
             var confirmPassword = document.getElementById('confirm-password').value;
             var errorMessage = document.getElementById('error-message');
+            var passwordField = document.getElementById('password');
+            var confirmPasswordField = document.getElementById('confirm-password');
 
             if (password !== confirmPassword) {
-                errorMessage.textContent = "Please make sure passwords match.";
                 errorMessage.style.display = "block";
+                passwordField.classList.add('input-error');
+                confirmPasswordField.classList.add('input-error');
                 event.preventDefault(); // Prevent form submission
             } else {
                 errorMessage.style.display = "none";
+                passwordField.classList.remove('input-error');
+                confirmPasswordField.classList.remove('input-error');
             }
         }
     </script>
+
 </body>
 </html>

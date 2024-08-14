@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="Static/styles.css">
     <link rel="icon" type="image/png" href="Static/Images/Logos/Logo.png">
 </head>
-<body id="stories-page" style="background: url('Static/Images/Background.jpg') no-repeat center; background-size: cover;">
+<body id="stories-page" style="background: url('Static/Images/Storiesbackground.png') no-repeat center; background-size: cover;">
     <nav class="navbar">
         <img src="Static/Images/Logos/Logo_removed.png" alt="Logo" class="logo-img">
         <ul class="menu">
@@ -35,27 +35,66 @@
     </nav>
 
     <main>
-        {% block content %}
+        <div id="mySidenav" class="sidenav">
+            <a href="#epee-down" id="value">Epee</a>
+            <a href="#foil-down" id="traditional">Foil</a>
+            <a href="#sabre-down" id="gourmet">Sabre</a>
+          </div>
+        <h1>Fencers</h1>
+        <div id="epee-down">
+        </div>
+        <br>
+        <h2>Epee</h2>
         <div class="card-container">
-            {% if male_fencers|length > 2 %}
-            <div class="card">
-                <img src="data:image/jpeg;base64,{{ fencer[3] }}" alt="{{ fencer[1] }} {{ fencer[2] }}">
+            {% for fencer in Mepee %}
+            <div class="card" data-content="<b>Gender</b> : {{ fencer[6] }} <br> <b>Age</b> : {{ fencer[7] }}  <br> <b>Nationality</b> : {{ fencer[4] }} <br> <b>Occupation</b> : {{ fencer[13] }} <br> <b>Languages</b> : {{ fencer[12] }} <br> <b>License NO.</b> : {{ fencer[14] }} <br> <h3 style='text-align: center;'>- Backstory -</h3> <p style='text-align: center;' >{{ fencer[15] }}</p>">
+                <img src="{{fencer[3]}}" alt="{{ fencer[1] }} {{ fencer[2] }}">
                 <h2>{{ fencer[1] }} {{ fencer[2] }}</h2>
                 <p>{{ fencer[4] }}</p>  
+                <h2>𓊆{{ fencer [11]}}𓊇</h2>
             </div>
-            {% endif %}
-            <div class="card">
-                <img src="player2.jpg" alt="Javon East">
-                <h2>Javon East</h2>
-                <p>Delantero</p>
+            {% endfor %}
+            {% for fencer in Fepee %}
+            <div class="card" data-content="<b>Gender</b> : {{ fencer[6] }} <br> <b>Age</b> : {{ fencer[7] }}  <br> <b>Nationality</b> : {{ fencer[4] }} <br> <b>Occupation</b> : {{ fencer[13] }} <br> <b>Languages</b> : {{ fencer[12] }} <br> <b>License NO.</b> : {{ fencer[14] }} <br> <h3 style='text-align: center;'>- Backstory -</h3> <p style='text-align: center;' >{{ fencer[15] }}</p>">
+                <img src="{{fencer[3]}}" alt="{{ fencer[1] }} {{ fencer[2] }}">
+                <h2>{{ fencer[1] }} {{ fencer[2] }}</h2>
+                <p>{{ fencer[4] }}</p>  
+                <h2>𓊆{{ fencer [11]}}𓊇</h2>
             </div>
-            <div class="card">
-                <img src="Static/Images/Fencing-background.jpeg" alt="Luis Paradela">
-                <h2>Luis Paradela</h2>
-                <p>Delantero</p>
+            {% endfor %}
+        </div>
+        <div id="foil-down">
+        </div>
+        <h1>Foil</h1>
+        <div class="card-container">
+            {% for fencer in Mfoil %}
+            <div class="card" data-content="<b>Gender</b> : {{ fencer[6] }} <br> <b>Age</b> : {{ fencer[7] }}  <br> <b>Nationality</b> : {{ fencer[4] }} <br> <b>Occupation</b> : {{ fencer[13] }} <br> <b>Languages</b> : {{ fencer[12] }} <br> <b>License NO.</b> : {{ fencer[14] }} <br> <h3 style='text-align: center;'>- Backstory -</h3> <p style='text-align: center;' >{{ fencer[15] }}</p>">
+                <img src="{{fencer[3]}}" alt="{{ fencer[1] }} {{ fencer[2] }}">
+                <h2>{{ fencer[1] }} {{ fencer[2] }}</h2>
+                <p>{{ fencer[4] }}</p>  
+                <h2>𓊆{{ fencer [11]}}𓊇</h2>
+            </div>
+            {% endfor %}
+        </div>
+        <div id="sabre-down">
+        </div>
+        <h1>Sabre</h1>
+        <div class="card-container">
+            {% for fencer in Msabre %}
+            <div class="card" data-content="<b>Gender</b> : {{ fencer[6] }} <br> <b>Age</b> : {{ fencer[7] }}  <br> <b>Nationality</b> : {{ fencer[4] }} <br> <b>Occupation</b> : {{ fencer[13] }} <br> <b>Languages</b> : {{ fencer[12] }} <br> <b>License NO.</b> : {{ fencer[14] }} <br> <h3 style='text-align: center;'>- Backstory -</h3> <p style='text-align: center;' >{{ fencer[15] }}</p>">
+                <img src="{{fencer[3]}}" alt="{{ fencer[1] }} {{ fencer[2] }}">
+                <h2>{{ fencer[1] }} {{ fencer[2] }}</h2>
+                <p>{{ fencer[4] }}</p>  
+                <h2>𓊆{{ fencer [11]}}𓊇</h2>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="expanded-card-container" id="expandedCardContainer">
+            <div class="expanded-card-content" id="expandedCardContent">
+                <span class="close-button" id="closeButton">&times;</span>
+                <div id="expandedCardDetails"></div>
             </div>
         </div>
-        {% endblock %}
     </main>
 
     <footer>
@@ -69,6 +108,45 @@
         </div>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+            const expandedCardContainer = document.getElementById('expandedCardContainer');
+            const expandedCardContent = document.getElementById('expandedCardContent');
+            const closeButton = document.getElementById('closeButton');
+            const expandedCardDetails = document.getElementById('expandedCardDetails');
+    
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const cardContent = card.getAttribute('data-content');
+                    const cardImage = card.querySelector('img').src;
+                    const cardTitle = card.querySelector('h2').textContent;
+                    const nationality = card.querySelector('p').textContent;
+
+                    const flagImage = `Static/Images/Flags/${nationality}.png`;
+    
+                    expandedCardDetails.innerHTML = `
+                        <img src="${flagImage}" alt="${nationality} flag" class="flag-img">
+                        <div class="image-container">
+                            <img src="${cardImage}" alt="${cardTitle}" class="expanded-card-img">
+                        </div>
+                        <h2>${cardTitle}</h2>
+                        <p>${cardContent}</p>
+                    `;
+                    expandedCardContainer.style.display = 'flex';
+                });
+            });
+    
+            closeButton.addEventListener('click', () => {
+                expandedCardContainer.style.display = 'none';
+            });
+    
+            expandedCardContainer.addEventListener('click', (e) => {
+                if (e.target === expandedCardContainer) {
+                    expandedCardContainer.style.display = 'none';
+                }
+            });
+        });
+    </script>    
 </body>
 </html>
