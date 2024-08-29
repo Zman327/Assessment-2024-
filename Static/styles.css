@@ -1,3 +1,4 @@
+/* MAIN */
 body {
     margin: 0;
     padding: 0;
@@ -5,16 +6,24 @@ body {
     background-color: #ffffff; /* Set a light background color */
 }
 
-video {
-    position: static;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
+html {
+    scroll-behavior: smooth;
 }
 
+h1 {
+    text-align: center;
+}
+
+/* Add media queries for different screen sizes */
+@media only screen and (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+}
+
+@media only screen and (max-width: 480px) {
+    /* Further adjustments for mobile devices */
+}
+
+/* NAVBAR & FOOTER*/
 .navbar {
     background-color: #fff;
     padding: 0.2%;
@@ -49,10 +58,6 @@ video {
 
 .menu li a:hover::after {
     width: 100%; 
-}
-
-#home {
-    position: relative;
 }
 
 .logo-img {
@@ -119,391 +124,6 @@ main {
     display: block;
 }
 
-
-.btns button {
-    height: 40px;
-    width: 150px;
-    border-radius: 100px;
-    border: none;
-    margin: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    outline: none;
-    transition: all 0.5s ease;
-}
-
-.btns button:hover {
-    background-color: #0088a9;
-    color: #fff;
-}
-
-.welcome-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0,0,0, 0.4);
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    z-index: 1;
-    font-weight: bold;
-    font-size: 28px;
-    border: 5px solid #f1f1f1;
-    width: 60%;
-    margin: auto;
-}
-
-.welcome-overlay h2 {
-    margin: 0;
-    font-size: 24px;
-}
-
-.fencing-matches {
-    text-align: center;
-    background-color: #ffffff;
-    padding-left: 20%;
-    padding-right: 20%;
-}
-
-.fencing-matches h2 {
-    margin-bottom: 20px;
-}
-
-.match {
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.match h3 {
-    margin-bottom: 10px;
-}
-
-.box-container {
-    display: flex;
-    justify-content: space-between; /* Adjust spacing between boxes */
-}
-
-video {
-    position: static;
-    top: 0;
-    left: 0;
-    min-width: none;
-    min-height: none;
-    max-width: 100%;
-    max-height: 100%;
-    z-index: -1; /* Push the video behind other elements */
-}
-
-/* Add media queries for different screen sizes */
-@media only screen and (max-width: 768px) {
-    /* Adjust styles for smaller screens */
-}
-
-@media only screen and (max-width: 480px) {
-    /* Further adjustments for mobile devices */
-}
-
-/* Mini Cards Container */
-.box-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px; /* Space between cards */
-}
-
-.game-mini-card-container {
-    width: 270px;
-}
-
-.game-mini-card {
-    display: block;
-    text-decoration: none;
-    color: #333;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #fff;
-}
-
-.placement-text {
-    font-weight: bold;
-    margin-top: 3%;
-}
-
-.game-mini-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Card Header */
-.game-mini-card-header {
-    padding: 15px;
-    background-color: #0acac7;
-    color: #fff;
-    text-align: center;
-}
-
-/* Cycle Match Button */
-#cycle-match-btn {
-    margin: 20px auto;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #0acac7;
-    color: #fff;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-/* Styles for the placement images and text */
-.placement {
-    display: flex;
-    align-items: left;
-    margin-bottom: 10px;
-}
-
-.placement-icon {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-}
-
-.game-mini-card_team {
-    flex: 1;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-}
-
-/* Styles for game mini card header */
-.game-mini-card_header {
-    padding: 10px;
-    background-color: #0acac7;
-}
-
-.game-mini-card_date {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-}
-
-.parallax-section {
-    position: relative;
-    background: url('Static/Images/Background.jpeg') no-repeat center center fixed; 
-    background-size: cover;
-    padding: 20px;
-    color: white; /* Adjust text color for better visibility against the background */
-}
-
-/* Section */
-.s-game-slider {
-    margin-top: 20px;
-}
-
-/* Container */
-.container-game-slider {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Game Slider Wrapper */
-.game-slider_wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Left Arrow */
-.game-slider_arrow.is-left {
-    margin-right: 20px;
-}
-
-/* Right Arrow */
-.game-slider_arrow.is-right {
-    margin-left: 20px;
-}
-
-/* Slider Column Wrapper */
-.game-slider_col_wrapper {
-    flex: 1;
-    overflow: hidden;
-}
-
-/* Slider Column List */
-.game-slider_col_list {
-    display: flex;
-    transition: transform 0.5s ease;
-}
-
-/* Arrow Icon */
-.game-slider_arrow_icon {
-    width: 20px;
-    height: 20px;
-}
-
-/* Add styles for the black line */
-.match-line {
-    width: 100%;
-    height: 2px;
-    background-color: rgb(255, 255, 255);
-    margin: 20px 0;
-}
-
-.match-line1 {
-    margin-top: 0px auto;
-    margin: 20px auto;
-    width: 50%;
-    height: 2px;
-    background-color: black;
-}
-
-/* Styles for the button to cycle through matches */
-#cycle-match-btn {
-    height: 40px;
-    width: 150px;
-    border-radius: 5px;
-    border: none;
-    margin: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    outline: none;
-    transition: all 0.3s ease;
-    background-color: #333;
-    color: #fff;
-}
-
-#cycle-match-btn:hover {
-    background-color: #555; /* Change color on hover */
-}
-
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.selectors {
-    text-align: center;
-    margin-bottom: 20px;
-}
-.selectors select {
-    padding: 8px 12px;
-    font-size: 16px;
-}
-
-.selector-group {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.selector-group .selector-label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.selector-group input[type="text"] {
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 200px; /* Adjust width as necessary */
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-table th, table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-}
-table th {
-    background-color: #f2f2f2;
-}
-
-/*body {
-    cursor: url('Static/Images/icons8-cursor-32.png') 15 15, auto;
-}
-
-a:hover {
-    cursor: url('Static/Images/Cursor_hover.png') 15 15, auto;
-} */
-
-/* Keyframes for the cursor animation */
-@keyframes cursorAnimation {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(1.5); /* Change the scale factor as needed */
-    }
-} 
-
-/* Split layout styles */
-.about-us {
-    background-color: #f9f9f9;
-    padding: 50px 0;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.column {
-    flex: 1;
-    padding: 0 15px;
-    box-sizing: border-box;
-}
-
-.column img {
-    width: 100%;
-    height: auto;
-}
-
-/* Reverse the layout for the second section */
-.about-us.reversed .column {
-    order: -1;
-}
-
-.about-us.reversed .column img {
-    order: 1;
-}
-
-/* Common styles for both sections */
-.about-us h2 {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.about-us p {
-    font-size: 18px;
-    line-height: 1.6;
-    text-align: justify;
-}
-
 footer {
     background-color: #222;
     color: #fff;
@@ -532,6 +152,65 @@ footer .social-media img:hover {
     transform: scale(1.2);
 }
 
+
+
+/* HOMEPAGE */
+#home {
+    position: relative;
+}
+
+video {
+    position: static;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.welcome-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0,0,0, 0.4);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1;
+    font-weight: bold;
+    font-size: 28px;
+    border: 5px solid #f1f1f1;
+    width: 60%;
+    margin: auto;
+}
+
+.welcome-overlay h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.btns button {
+    height: 40px;
+    width: 150px;
+    border-radius: 100px;
+    border: none;
+    margin: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.5s ease;
+}
+
+.btns button:hover {
+    background-color: #0088a9;
+    color: #fff;
+}
+/* LOG IN & REGISTER */
+
+/* RANKING */
 .container {
     max-width: 80%;
     margin: 20px auto;
@@ -541,39 +220,51 @@ footer .social-media img:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 1);
 }
 
-h1 {
-    text-align: center;
-}
-
 .selectors {
+    display: flex;
     text-align: center;
     margin-bottom: 20px;
 }
+
 .selectors select {
     padding: 8px 12px;
     font-size: 16px;
 }
+
+.selector-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.selector-group .selector-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.selector-group input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px; /* Adjust width as necessary */
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
 }
+
 table th, table td {
     border: 1px solid #ddd;
     padding: 10px;
-    text-align: left;
-}
-table th {
-    background-color: #f2f2f2;
-    color: #f2f2f2;
+    text-align: center;
 }
 
-#rankings-page {
-    background: linear-gradient(to bottom, #0acac7, #f9f9f9); /* Gradient background */
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    min-height: 100vh;
-    padding: 0;
-    margin: 0;
+table th {
+    background-color: #003366;
+    color: #f2f2f2;
 }
 
 .leaderboard {
@@ -629,12 +320,12 @@ table th {
 }
 
 .main_container {
-    max-width: 1200px;
+    max-width: 80%;
     margin: 20px auto;
+    background-color: #fff;
     padding: 20px;
-    background-color: var(--background-color);
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
 }
 
 .main_container1 {
@@ -647,26 +338,13 @@ table th {
     color: #333;
 }
 
-.selectors {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
 
-/* Existing styles */
 
 .selectors {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-}
-
-.selector-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 10px;
 }
 
 .selector-label {
@@ -681,21 +359,6 @@ table th {
     margin: 0 10px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table th, table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
-
-table th {
-    background-color: #003366;
-}
-
 .pagination {
     display: flex;
     justify-content: center;
@@ -706,7 +369,7 @@ table th {
     padding: 10px 20px;
     margin: 0 5px;
     border: none;
-    background-color: #0acac7;
+    background-color: #0088a9;
     color: white;
     cursor: pointer;
     font-size: 16px;
@@ -721,6 +384,16 @@ table th {
     width: 100%; /* Adjust based on your design */
     height: 60%; /* Adjust based on your design */
     object-fit: cover; /* Ensure the image scales properly */
+}
+
+
+/* CALENDAR */
+
+/* Highlight today's date */
+#calendar td.today {
+    background-color: #dbdbdb; /* Highlight color */
+    font-weight: bold;
+    color: #000;
 }
 
 /* Calendar Table */
@@ -784,70 +457,51 @@ table th {
     color: #0088a9; /* Set a color for event titles */
 }
 
-.form-section {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+
+
+/* ABOUT US */
+.about-us {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column {
+    flex: 1;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.column img {
     width: 100%;
-    max-width: 400px; /* Set max-width for the form */
+    height: auto;
+}
+
+/* Reverse the layout for the second section */
+.about-us.reversed .column {
+    order: -1;
+}
+
+.about-us.reversed .column img {
+    order: 1;
+}
+
+.about-us h2 {
     text-align: center;
+    margin-bottom: 30px;
 }
 
-.form-section h1 {
-    margin-bottom: 20px;
-    color: #17706d; /* Adjust the color to match your theme */
+.about-us p {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: justify;
 }
 
-.form-group {
-    margin-bottom: 15px;
-    text-align: left; /* Align labels and inputs to the left */
-}
-
-.form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.form-group input {
-    width: calc(100% - 20px); /* Full width with padding adjustment */
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box; /* Ensure padding doesn't affect overall width */
-}
-
-button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #0acac7;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button[type="submit"]:hover {
-    background-color: #0b9f9d;
-}
-
-.login-link {
-    margin-top: 15px;
-    color: #333;
-}
-
-.login-link a {
-    color: #0acac7;
-    text-decoration: none;
-}
-
-.login-link a:hover {
-    text-decoration: underline;
-}
 
 .intro {
     display: flex;
@@ -947,6 +601,7 @@ button[type="submit"]:hover {
     background-color: #17706d;
 }
 
+/*ERROR PAGE*/
 .error-container {
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
@@ -968,6 +623,52 @@ button[type="submit"]:hover {
     font-size: 24px;
 }
 
+
+/*STORIES*/
+
+.stories-container {
+    max-width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
+
+/* Improve Section Headers */
+.section-header {
+    font-size: 2.5rem; /* Increase font size */
+    color: #000000; /* Ensure the header text color stands out */
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.subsection-header {
+    font-size: 2rem; /* Increase font size */
+    color: #000000; /* Ensure the header text color stands out */
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 2px solid #0088a9; /* Add underline */
+    padding-bottom: 10px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 206px;
+    text-align: left;
+    position: relative;
+}
+
 .card-container {
     display: flex;
     justify-content: center;
@@ -977,14 +678,17 @@ button[type="submit"]:hover {
 }
 
 .card h2 {
-    font-size: 1.5em;
-    margin: 10px 0;
-    color: #f1f1f1;
+    margin: 10px;
+    font-size: 18px;
+    color: #000;
+    text-align: center;
 }
 
 .card p {
-    color: #ffffff;
-    margin-bottom: 20px;
+    margin: 10px;
+    font-size: 14px;
+    color: #555;
+    text-align: center;
 }
 
 .story-content {
@@ -1014,38 +718,12 @@ button[type="submit"]:hover {
     padding: 20px;
 }
 
-.card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    width: 230px;
-    text-align: left;
-    position: relative;
-}
-
 .card img {
     width: 100%;
     height: auto;
     display: block;
     border-radius: 50%;
     object-fit: cover;
-}
-
-.card h2 {
-    margin: 10px;
-    font-size: 18px;
-    color: #000;
-    text-align: center;
-}
-
-.card p {
-    margin: 10px;
-    font-size: 14px;
-    color: #555;
-    text-align: center;
 }
 
 .card:hover {
@@ -1149,6 +827,7 @@ button[type="submit"]:hover {
     left: 0; 
     background-color: #000000;
     z-index: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
 }
   
 #value {
@@ -1167,8 +846,4 @@ button[type="submit"]:hover {
     top: 260px;
     background-color: #ffffff; 
     z-index: 1;
-}
-  
-html {
- scroll-behavior: smooth;
 }

@@ -3,30 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fencing Hub - Events Calendar</title>
+    <title>Fencing Hub - Calendar</title>
     <link rel="stylesheet" href="/Static/styles.css">
     <link rel="icon" type="image/png" href="Static/Images/Logos/Logo.png">
 </head>
-<body id="rankings-page" style="background: url('Static/Images/Background.jpg') no-repeat center; background-size: cover;">
+<body id="rankings-page" style="background: linear-gradient(135deg, #0088a9, #24252A);">
     {% block content %}
     <nav class="navbar">
         <img src="Static/Images/Logos/Logo_removed.png" alt="Logo" class="logo-img">
         <ul class="menu">
             <li><a href="/home">Home</a></li>
             <li><a href="/rankings">Rankings</a></li>
-            <li class="dropdown">
-                <a href="/events">Events ▼</a>
-                <div class="dropdown-content">
-                    <a href="/calendar">Calendar</a>
-                    <a href="#">Results</a>
-                </div>
-            </li>
+            <li><a href="/calendar">Calendar</a></li>
             <li class="dropdown">
                 <a href="#">Information ▼</a>
                 <div class="dropdown-content">
                     <a href="/about_fencing">About Fencing</a>
-                    <a href="/fencing_stories.html">Stories</a>
-                    <a href="/about_us.html">About Us</a>
+                    <a href="/stories">Stories</a>
+                    <a href="/about_us">About Us</a>
                 </div>
             </li>
         </ul>
@@ -82,7 +76,7 @@
         </table>
         <div id="event-list" style="display: flex; justify-content: space-between;">
             <div id="upcoming-events" style="width: 48%;">
-                <h2>Upcoming Events</h2>
+                <h2>All Events</h2>
                 <ul id="events">
                     {% for event in events %}
                     <li data-date="{{ event[2] }}">{{ event[1] }}</li>
@@ -121,6 +115,9 @@
                 const firstDay = new Date(year, month).getDay();
                 const daysInMonth = new Date(year, month + 1, 0).getDate();
 
+                const today = new Date();
+                const isCurrentMonthAndYear = today.getMonth() === month && today.getFullYear() === year;
+
                 let row = document.createElement('tr');
                 for (let i = 0; i < firstDay; i++) {
                     let cell = document.createElement('td');
@@ -134,6 +131,12 @@
                     }
                     let cell = document.createElement('td');
                     cell.textContent = day;
+
+                    // Highlight today
+                    if (isCurrentMonthAndYear && day === today.getDate()) {
+                        cell.classList.add('today');
+                    }
+
                     row.appendChild(cell);
                 }
 

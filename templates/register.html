@@ -46,6 +46,14 @@
           margin-bottom: 20px;
         }
 
+        .input-box input:-webkit-autofill,
+        .input-boxinput:-webkit-autofill:hover,
+        .input-boxinput:-webkit-autofill:focus,
+        .input-boxinput:-webkit-autofill:active {
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: #fdfdfd;
+        }
+
         .input-box {
           position: relative;
           width: 100%;
@@ -147,9 +155,42 @@
         }
         
         .input-error {
-          border-color: red;
+          border-color: red !important;
+          animation: shake 0.3s ease-in-out;
         }
 
+        .privacy-policy {
+          font-size: 14px;
+          text-align: center;
+          margin: 10px 0 20px;
+        }
+
+        .privacy-policy p {
+            color: rgba(237, 240, 241, 0.7);
+            display: inline-block;
+            font-weight: 400;
+        }
+
+        .privacy-policy a {
+            color: #0088a9;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+             padding-left: 3px;
+        }
+
+        .privacy-policy a:hover {
+            color: #006f88;
+            text-decoration: underline;
+        }
+        
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
     </style>
 </head>
 <body>
@@ -177,12 +218,11 @@
                 <i class='bx bxs-lock-alt'></i>
             </div>
             
-            <div class="remember-forgot">
-                <label>
-                    <p>By clicking register, you agree to our</p>
-                    <a href="/privacy_policy">Privacy Policy</a>
-                </label>
-            </div>
+            <div class="privacy-policy">
+              <p>By clicking register, you agree to our <br>
+                  <a href="/privacy_policy">Privacy Policy</a>.
+              </p>
+          </div>
             <div id="error-message" class="error">Please make sure passwords match.</div>
             <button type="submit" class="login-submit">Register</button>
 

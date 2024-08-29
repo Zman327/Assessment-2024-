@@ -3,23 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stories - Fencing Hub</title>
+    <title>Fencing Hub - Stories</title>
     <link rel="stylesheet" href="Static/styles.css">
     <link rel="icon" type="image/png" href="Static/Images/Logos/Logo.png">
 </head>
-<body id="stories-page" style="background: url('Static/Images/Storiesbackground.png') no-repeat center; background-size: cover;">
+<body id="stories-page" style="background: linear-gradient(135deg, #0088a9, #24252A);">
     <nav class="navbar">
         <img src="Static/Images/Logos/Logo_removed.png" alt="Logo" class="logo-img">
         <ul class="menu">
             <li><a href="/home">Home</a></li>
             <li><a href="/rankings">Rankings</a></li>
-            <li class="dropdown">
-                <a href="/events">Events ▼</a>
-                <div class="dropdown-content">
-                    <a href="/calendar">Calendar</a>
-                    <a href="#">Results</a>
-                </div>
-            </li>
+            <li><a href="/calendar">Calendar</a></li>
             <li class="dropdown">
                 <a href="#">Information ▼</a>
                 <div class="dropdown-content">
@@ -39,56 +33,61 @@
             <a href="#epee-down" id="value">Epee</a>
             <a href="#foil-down" id="traditional">Foil</a>
             <a href="#sabre-down" id="gourmet">Sabre</a>
-          </div>
-        <h1>Fencers</h1>
-        <div id="epee-down">
         </div>
-        <br>
-        <h2>Epee</h2>
-        <div class="card-container">
-            {% for fencer in Mepee %}
-            <div class="card" data-content="<b>Gender</b> : {{ fencer[6] }} <br> <b>Age</b> : {{ fencer[7] }}  <br> <b>Nationality</b> : {{ fencer[4] }} <br> <b>Occupation</b> : {{ fencer[13] }} <br> <b>Languages</b> : {{ fencer[12] }} <br> <b>License NO.</b> : {{ fencer[14] }} <br> <h3 style='text-align: center;'>- Backstory -</h3> <p style='text-align: center;' >{{ fencer[15] }}</p>">
-                <img src="{{fencer[3]}}" alt="{{ fencer[1] }} {{ fencer[2] }}">
-                <h2>{{ fencer[1] }} {{ fencer[2] }}</h2>
-                <p>{{ fencer[4] }}</p>  
-                <h2>𓊆{{ fencer [11]}}𓊇</h2>
+
+        <div class="stories-container">
+            <h1 class="section-header">Fencer Information</h1>
+            <div id="epee-down"></div>
+            <br>
+            <h2 class="subsection-header">Epee</h2>
+            <h2>- Males -</h2>
+            <div class="card-container">
+                {% for fencer in Mepee %}
+                <div class="card" data-content="<b>Gender</b> : {{ fencer[6] }} <br> <b>Age</b> : {{ fencer[7] }}  <br> <b>Nationality</b> : {{ fencer[4] }} <br> <b>Occupation</b> : {{ fencer[13] }} <br> <b>Languages</b> : {{ fencer[12] }} <br> <b>License NO.</b> : {{ fencer[14] }} <br> <h3 style='text-align: center;'>- Backstory -</h3> <p style='text-align: center;' >{{ fencer[15] }}</p>">
+                    <img src="{{fencer[3]}}" alt="{{ fencer[1] }} {{ fencer[2] }}">
+                    <h2>{{ fencer[1] }} {{ fencer[2] }}</h2>
+                    <p>{{ fencer[4] }}</p>  
+                    <h2>𓊆{{ fencer [11]}}𓊇</h2>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-            {% for fencer in Fepee %}
-            <div class="card" data-content="<b>Gender</b> : {{ fencer[6] }} <br> <b>Age</b> : {{ fencer[7] }}  <br> <b>Nationality</b> : {{ fencer[4] }} <br> <b>Occupation</b> : {{ fencer[13] }} <br> <b>Languages</b> : {{ fencer[12] }} <br> <b>License NO.</b> : {{ fencer[14] }} <br> <h3 style='text-align: center;'>- Backstory -</h3> <p style='text-align: center;' >{{ fencer[15] }}</p>">
-                <img src="{{fencer[3]}}" alt="{{ fencer[1] }} {{ fencer[2] }}">
-                <h2>{{ fencer[1] }} {{ fencer[2] }}</h2>
-                <p>{{ fencer[4] }}</p>  
-                <h2>𓊆{{ fencer [11]}}𓊇</h2>
+            <h3>Female</h3>
+            <div class="card-container">
+                {% for fencer in Fepee %}
+                <div class="card" data-content="<b>Gender</b> : {{ fencer[6] }} <br> <b>Age</b> : {{ fencer[7] }}  <br> <b>Nationality</b> : {{ fencer[4] }} <br> <b>Occupation</b> : {{ fencer[13] }} <br> <b>Languages</b> : {{ fencer[12] }} <br> <b>License NO.</b> : {{ fencer[14] }} <br> <h3 style='text-align: center;'>- Backstory -</h3> <p style='text-align: center;' >{{ fencer[15] }}</p>">
+                    <img src="{{fencer[3]}}" alt="{{ fencer[1] }} {{ fencer[2] }}">
+                    <h2>{{ fencer[1] }} {{ fencer[2] }}</h2>
+                    <p>{{ fencer[4] }}</p>  
+                    <h2>𓊆{{ fencer [11]}}𓊇</h2>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-        <div id="foil-down">
-        </div>
-        <h1>Foil</h1>
-        <div class="card-container">
-            {% for fencer in Mfoil %}
-            <div class="card" data-content="<b>Gender</b> : {{ fencer[6] }} <br> <b>Age</b> : {{ fencer[7] }}  <br> <b>Nationality</b> : {{ fencer[4] }} <br> <b>Occupation</b> : {{ fencer[13] }} <br> <b>Languages</b> : {{ fencer[12] }} <br> <b>License NO.</b> : {{ fencer[14] }} <br> <h3 style='text-align: center;'>- Backstory -</h3> <p style='text-align: center;' >{{ fencer[15] }}</p>">
-                <img src="{{fencer[3]}}" alt="{{ fencer[1] }} {{ fencer[2] }}">
-                <h2>{{ fencer[1] }} {{ fencer[2] }}</h2>
-                <p>{{ fencer[4] }}</p>  
-                <h2>𓊆{{ fencer [11]}}𓊇</h2>
+            <div id="foil-down"></div>
+            <h1 class="subsection-header">Foil</h1>
+            <div class="card-container">
+                {% for fencer in Mfoil %}
+                <div class="card" data-content="<b>Gender</b> : {{ fencer[6] }} <br> <b>Age</b> : {{ fencer[7] }}  <br> <b>Nationality</b> : {{ fencer[4] }} <br> <b>Occupation</b> : {{ fencer[13] }} <br> <b>Languages</b> : {{ fencer[12] }} <br> <b>License NO.</b> : {{ fencer[14] }} <br> <h3 style='text-align: center;'>- Backstory -</h3> <p style='text-align: center;' >{{ fencer[15] }}</p>">
+                    <img src="{{fencer[3]}}" alt="{{ fencer[1] }} {{ fencer[2] }}">
+                    <h2>{{ fencer[1] }} {{ fencer[2] }}</h2>
+                    <p>{{ fencer[4] }}</p>  
+                    <h2>𓊆{{ fencer [11]}}𓊇</h2>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-        <div id="sabre-down">
-        </div>
-        <h1>Sabre</h1>
-        <div class="card-container">
-            {% for fencer in Msabre %}
-            <div class="card" data-content="<b>Gender</b> : {{ fencer[6] }} <br> <b>Age</b> : {{ fencer[7] }}  <br> <b>Nationality</b> : {{ fencer[4] }} <br> <b>Occupation</b> : {{ fencer[13] }} <br> <b>Languages</b> : {{ fencer[12] }} <br> <b>License NO.</b> : {{ fencer[14] }} <br> <h3 style='text-align: center;'>- Backstory -</h3> <p style='text-align: center;' >{{ fencer[15] }}</p>">
-                <img src="{{fencer[3]}}" alt="{{ fencer[1] }} {{ fencer[2] }}">
-                <h2>{{ fencer[1] }} {{ fencer[2] }}</h2>
-                <p>{{ fencer[4] }}</p>  
-                <h2>𓊆{{ fencer [11]}}𓊇</h2>
+            <div id="sabre-down"></div>
+            <h1 class="subsection-header">Sabre</h1>
+            <div class="card-container">
+                {% for fencer in Msabre %}
+                <div class="card" data-content="<b>Gender</b> : {{ fencer[6] }} <br> <b>Age</b> : {{ fencer[7] }}  <br> <b>Nationality</b> : {{ fencer[4] }} <br> <b>Occupation</b> : {{ fencer[13] }} <br> <b>Languages</b> : {{ fencer[12] }} <br> <b>License NO.</b> : {{ fencer[14] }} <br> <h3 style='text-align: center;'>- Backstory -</h3> <p style='text-align: center;' >{{ fencer[15] }}</p>">
+                    <img src="{{fencer[3]}}" alt="{{ fencer[1] }} {{ fencer[2] }}">
+                    <h2>{{ fencer[1] }} {{ fencer[2] }}</h2>
+                    <p>{{ fencer[4] }}</p>  
+                    <h2>𓊆{{ fencer [11]}}𓊇</h2>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
+
         <div class="expanded-card-container" id="expandedCardContainer">
             <div class="expanded-card-content" id="expandedCardContent">
                 <span class="close-button" id="closeButton">&times;</span>
@@ -133,6 +132,7 @@
                         <h2>${cardTitle}</h2>
                         <p>${cardContent}</p>
                     `;
+    
                     expandedCardContainer.style.display = 'flex';
                 });
             });
@@ -147,6 +147,6 @@
                 }
             });
         });
-    </script>    
+    </script>
 </body>
 </html>

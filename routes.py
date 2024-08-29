@@ -53,22 +53,33 @@ def registerpage():
 @app.route('/login', methods=['GET', 'POST'])
 def loginpage():
     if request.method == 'POST':
+        # Retrieve form data
         username = request.form['username']
         password = request.form['password']
+        
+        # Hash the password
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
+        # Query the database to find the user
         user = do_sql("SELECT * FROM Login WHERE username = ? AND password = ?", (username, hashed_password))
 
+        # Check if user exists
         if user:
+            # Store username in session
             session['username'] = username
             flash("Login successful!", "success")
-            
-            return redirect(url_for('homepage'))
+            return redirect(url_for('homepage'))  # Redirect to homepage on successful login
         else:
+            # Display error message
             flash("Invalid username or password!", "error")
-
+            return render_template('login.html')
+    
+    # If GET request, just render the login page
     return render_template('login.html')
 
+@app.route('/forgot-password')
+def forgotpasswordpage():
+    return render_template('forgot_password.html')
 
 @app.route('/logout')
 def logout():
@@ -89,9 +100,7 @@ def get_fencers_with_images():
 
 @app.route('/home')
 def homepage():
-    events = do_sql("SELECT * FROM Male_Events ORDER BY start_date ASC LIMIT 4")
-    logged_in = 'user_id' in session
-    return render_template('index.html', events=events, logged_in=logged_in)
+    return render_template('index.html')
 
 
 @app.route('/events')
@@ -106,7 +115,7 @@ def aboutfencingpage():
 
 @app.route('/calendar')
 def calendarpage():
-    events = do_sql("SELECT * FROM Male_Events ORDER BY start_date ASC")
+    events = do_sql("SELECT * FROM Events ORDER BY start_date ASC")
     return render_template('calendar.html', events=events)
 
 
@@ -141,9 +150,14 @@ def aboutuspage():
 def privacypage():
     return render_template('privacy-policy.html')
 
+
 @app.route('/profile')
 def profilepage():
     return render_template('profile.html')
+
+@app.route('/test')
+def testpage():
+    return render_template('Test.html')
 
 @app.errorhandler(404)
 def page_not_found(e):
