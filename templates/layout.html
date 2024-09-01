@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Fencing Hub{% endblock %}</title>
+    <link rel="stylesheet" href="/Static/styles.css">
+    <link rel="icon" type="image/png" href="Static/Images/Logos/Logo.png">
+</head>
+<body id="{% block body_id %}index-page{% endblock %}" style="{% block body_style %}background: linear-gradient(135deg, #24252A, #0088a9);{% endblock %}">
+
+    <nav class="navbar"> 
+        <img src="Static/Images/Logos/Logo_removed.png" alt="Logo" class="logo-img">
+        <ul class="menu">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/rankings">Rankings</a></li>
+            <li><a href="/calendar">Calendar</a></li>
+            <li class="dropdown">
+                <a href="#">Information ▼</a>
+                <div class="dropdown-content">
+                    <a href="/about_fencing">About Fencing</a>
+                    <a href="/stories">Stories</a>
+                    <a href="/about_us">About Us</a>
+                </div>
+            </li>
+        </ul>
+        <div class="btns">
+            {% if logged_in %}
+            <button onclick="window.location.href='/logout'">👤Log Out</button>
+            {% else %}
+            <button onclick="window.location.href='/login'">👤Log In</button>
+            {% endif %}
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+        <ul>
+            <li>&copy; 2024 Fencing Hub. All rights reserved.</li>
+        </ul>
+        <div class="social-media">
+            <a href="#"><img src="Static/Images/Logos/Facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="Static/Images/Logos/X.png" alt="Twitter"></a>
+            <a href="#"><img src="Static/Images/Logos/Insta.png" alt="Instagram"></a>
+        </div>
+    </footer>
+
+    <script>
+        // Function to check if the user is logged in
+        function isLoggedIn() {
+            return true; // Replace with actual logic
+        }
+
+        // Function to update the login button text
+        function updateLoginButton() {
+            var loginButton = document.getElementById('login-button');
+            if (isLoggedIn()) {
+                loginButton.textContent = '👤Log Out';
+                loginButton.onclick = function() {
+                    window.location.href = '/logout';
+                };
+            }
+        }
+    </script>
+
+</body>
+</html>

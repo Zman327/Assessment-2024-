@@ -208,7 +208,8 @@ video {
     background-color: #0088a9;
     color: #fff;
 }
-/* LOG IN & REGISTER */
+/* LOGIN & REGISTER */
+
 
 /* RANKING */
 .container {
@@ -222,8 +223,14 @@ video {
 
 .selectors {
     display: flex;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
+}
+
+.selector-label {
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .selectors select {
@@ -336,20 +343,6 @@ table th {
     background: url('Static/Images/Background.jpg') no-repeat center;
     background-size: cover;
     color: #333;
-}
-
-
-
-.selectors {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.selector-label {
-    font-weight: bold;
-    margin-bottom: 10px;
 }
 
 .vertical-line {

@@ -1,103 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fencing Hub</title>
-    <link rel="stylesheet" href="/Static/styles.css">
-    <!-- Add favicon -->
-    <link rel="icon" type="image/png" href="Static/Images/Logos/Logo.png">
-</head>
-<body id="index-page" style="background: linear-gradient(135deg, #24252A, #0088a9);">
-        <nav class="navbar"> 
-            <img src="Static/Images/Logos/Logo_removed.png" alt="Logo" class="logo-img">
-            <ul class="menu">
-                <li><a href="/home">Home</a></li>
-                <li><a href="/rankings">Rankings</a></li>
-                <li><a href="/calendar">Calendar</a></li>
-                <li class="dropdown">
-                    <a href="#">Information ▼</a>
-                    <div class="dropdown-content">
-                        <a href="/about_fencing">About Fencing</a>
-                        <a href="/stories">Stories</a>
-                        <a href="/about_us">About Us</a>
-                    </div>
-                </li>
-            </ul>
-            <div class="btns">
-                {% if logged_in %}
-                <button onclick="window.location.href='/logout'">👤Log Out</button>
-                {% else %}
-                <button onclick="window.location.href='/login'">👤Log In</button>
-                {% endif %}
-            </div>
-        </nav>
-    <video id="video-background" autoplay loop muted>
-        <source src="Static/Images/video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-        <script src="script.js"></script> 
-    </video>
+{% extends "layout.html" %}
 
-    <main>
-        <div class="welcome-overlay">
-            <h1>Fencing Hub</h1>
-            <p>Your ultimate destination for all things fencing.</p>
-            <div class="btns">
-                <button onclick="window.location.href='/rankings'">Rankings</button>
-                <button onclick="window.location.href='/about_us'">About us</button>
-            </div>
-        </div>          
-    </main>
+{% block title %}Home - Fencing Hub{% endblock %}
 
-    <footer>
-        <ul>
-            <li>&copy; 2024 Fencing Hub. All rights reserved.</li>
-        </ul>
-        <div class="social-media">
-            <a href="#"><img src="Static/Images/Logos/Facebook.png" alt="Facebook"></a>
-            <a href="#"><img src="Static/Images/Logos/X.png" alt="Twitter"></a>
-            <a href="#"><img src="Static/Images/Logos/Insta.png" alt="Instagram"></a>
+{% block content %}
+<video id="video-background" autoplay loop muted>
+    <source src="Static/Images/video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<main>
+    <div class="welcome-overlay">
+        <h1>Fencing Hub</h1>
+        <p>Your ultimate destination for all things fencing.</p>
+        <div class="btns">
+            <button onclick="window.location.href='/rankings'">Rankings</button>
+            <button onclick="window.location.href='/about_us'">About us</button>
         </div>
-    </footer>
-</body>
-<script>
-    // Function to check if the user is logged in
-    function isLoggedIn() {
-        // This is a placeholder function.
-        // Replace it with actual logic to check if the user is logged in.
-        // For example, you might check a cookie, local storage, or make an API call.
-        return true; // Assume user is logged in for this example
-    }
-
-    // Function to update the login button text
-    function updateLoginButton() {
-        var loginButton = document.getElementById('login-button');
-        if (isLoggedIn()) {
-            loginButton.textContent = '👤Log Out'; // Update the button text
-            loginButton.onclick = function() {
-                window.location.href = '/logout'; // Update the button action
-            };
-        }
-    }
-document.addEventListener('DOMContentLoaded', () => {
-    const loginButton = document.querySelector('.btns button');
-    const isLoggedIn = Boolean(localStorage.getItem('userLoggedIn'));
-
-    if (isLoggedIn) {
-        loginButton.textContent = '👤Log Out';
-        loginButton.onclick = () => {
-            localStorage.removeItem('userLoggedIn');
-            window.location.href = '/logout';
-        };
-    } else {
-        loginButton.textContent = '👤Log In';
-        loginButton.onclick = () => {
-            window.location.href = '/login';
-        };
-    }
-});
-    // Call the function to update the login button text when the page loads
-    window.onload = updateLoginButton;
-</script>
-
-</html>
+    </div>          
+</main>
+{% endblock %}

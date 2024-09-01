@@ -1,64 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <script src="test.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fencing Hub</title>
+    <link rel="stylesheet" href="/Static/styles.css">
+    <!-- Add favicon -->
+    <link rel="icon" type="image/png" href="Static/Images/Logos/Logo.png">
+</head>
+<body id="index-page" style="background: linear-gradient(135deg, #24252A, #0088a9);">
+        <nav class="navbar"> 
+            <img src="Static/Images/Logos/Logo_removed.png" alt="Logo" class="logo-img">
+            <ul class="menu">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/rankings">Rankings</a></li>
+                <li><a href="/calendar">Calendar</a></li>
+                <li class="dropdown">
+                    <a href="#">Information ▼</a>
+                    <div class="dropdown-content">
+                        <a href="/about_fencing">About Fencing</a>
+                        <a href="/stories">Stories</a>
+                        <a href="/about_us">About Us</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="btns">
+                <button onclick="window.location.href='/profile'">👤Profile</button>
+            </div>
+        </nav>
+    <video id="video-background" autoplay loop muted>
+        <source src="Static/Images/video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+        <script src="script.js"></script> 
+    </video>
 
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-    ></script>
-    <script type="text/javascript">
-      (function () {
-        emailjs.init("J01QMSmqj93QY8gmJ");
-      })();
-    </script>
-  </head>
-  <body>
-    <div class="container border mt-3 bg-light">
-      <div class="row">
-        <div class="col-md-6 p-5 bg-primary text-white">
-          <h1>Hi there!</h1>
-          <h4>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo,
-          </h4>
+    <main>
+        <div class="welcome-overlay">
+            <h1>Fencing Hub</h1>
+            <p>Your ultimate destination for all things fencing.</p>
+            <div class="btns">
+                <button onclick="window.location.href='/rankings'">Rankings</button>
+                <button onclick="window.location.href='/about_us'">About us</button>
+            </div>
+        </div>          
+    </main>
+
+    <footer>
+        <ul>
+            <li>&copy; 2024 Fencing Hub. All rights reserved.</li>
+        </ul>
+        <div class="social-media">
+            <a href="#"><img src="Static/Images/Logos/Facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="Static/Images/Logos/X.png" alt="Twitter"></a>
+            <a href="#"><img src="Static/Images/Logos/Insta.png" alt="Instagram"></a>
         </div>
-        <div class="col-md-6 border-left py-3">
-          <h1>Contact form</h1>
-          <div class="form-group">
-            <h5 for="name">Name</h5>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              placeholder="Enter name"
-            />
-          </div>
-          <div class="form-group">
-            <h5 for="email">Email</h5>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              placeholder="Enter email"
-            />
-          </div>
-          <div class="form-group">
-            <h5 for="message">Message</h5>
-            <textarea class="form-control" id="message" rows="3"></textarea>
-          </div>
-          <button class="btn btn-primary" onclick="sendMail()">Submit</button>
-        </div>
-      </div>
-    </div>
-  </body>
+    </footer>
+</body>
+<script>
+    // Function to check if the user is logged in
+    function isLoggedIn() {
+        // This is a placeholder function.
+        // Replace it with actual logic to check if the user is logged in.
+        // For example, you might check a cookie, local storage, or make an API call.
+        return true; // Assume user is logged in for this example
+    }
+
+    // Function to update the login button text
+    function updateLoginButton() {
+        var loginButton = document.getElementById('login-button');
+        if (isLoggedIn()) {
+            loginButton.textContent = '👤Log Out'; // Update the button text
+            loginButton.onclick = function() {
+                window.location.href = '/logout'; // Update the button action
+            };
+        }
+    }
+document.addEventListener('DOMContentLoaded', () => {
+    const loginButton = document.querySelector('.btns button');
+    const isLoggedIn = Boolean(localStorage.getItem('userLoggedIn'));
+
+    if (isLoggedIn) {
+        loginButton.textContent = '👤Log Out';
+        loginButton.onclick = () => {
+            localStorage.removeItem('userLoggedIn');
+            window.location.href = '/logout';
+        };
+    } else {
+        loginButton.textContent = '👤Log In';
+        loginButton.onclick = () => {
+            window.location.href = '/login';
+        };
+    }
+});
+    // Call the function to update the login button text when the page loads
+    window.onload = updateLoginButton;
+</script>
+
 </html>

@@ -1,32 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fencing Hub - About Us</title>
-    <link rel="stylesheet" href="/Static/styles.css">
-    <link rel="icon" type="image/png" href="Static/Images/Logos/Logo.png">
-</head>
-<body id="about-us-page" style="background: linear-gradient(135deg, #0088a9, #24252A);">
-    <nav class="navbar">
-        <img src="Static/Images/Logos/Logo_removed.png" alt="Logo" class="logo-img">
-        <ul class="menu">
-            <li><a href="/home">Home</a></li>
-            <li><a href="/rankings">Rankings</a></li>
-            <li><a href="/calendar">Calendar</a></li>
-            <li class="dropdown">
-                <a href="#">Information ▼</a>
-                <div class="dropdown-content">
-                    <a href="/about_fencing">About Fencing</a>
-                    <a href="/stories">Stories</a>
-                    <a href="/about_us">About Us</a>
-                </div>
-            </li>
-        </ul>
-        <div class="btns">
-            <button onclick="window.location.href='/login'">👤Log In</button>
-        </div>
-    </nav>
+{% extends "layout.html" %}
+
+{% block title %}About us - Fencing Hub{% endblock %}
+
+{% block body_id %}about_us-page{% endblock %}
+{% block body_style %}background: linear-gradient(135deg, #0088a9, #24252A);{% endblock %}
+    {% block content %}
     <main class="main_container">
         <section class="about-us">
             <div class="container">
@@ -70,15 +48,6 @@
             </div>
         </section>
     </main>
-    <footer>
-        <ul>
-            <li>&copy; 2024 Fencing Hub. All rights reserved.</li>
-        </ul>
-        <div class="social-media">
-            <a href="#"><img src="Static/Images/Logos/Facebook.png" alt="Facebook"></a>
-            <a href="#"><img src="Static/Images/Logos/X.png" alt="Twitter"></a>
-            <a href="#"><img src="Static/Images/Logos/Insta.png" alt="Instagram"></a>
-        </div>
-    </footer>
 </body>
 </html>
+{% endblock %}

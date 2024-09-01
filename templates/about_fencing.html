@@ -1,35 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layout.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fencing Hub - About Fencing</title>
-    <link rel="stylesheet" href="Static/styles.css">
-    <link rel="icon" type="image/png" href="Static/Images/Logos/Logo.png">
-</head>
+{% block title %}About fencing - Fencing Hub{% endblock %}
 
-<body id="about-fencing-page" style="background: linear-gradient(135deg, #0088a9, #24252A)">
-    <nav class="navbar">
-        <img src="Static/Images/Logos/Logo_removed.png" alt="Logo" class="logo-img">
-        <ul class="menu">
-            <li><a href="/home">Home</a></li>
-            <li><a href="/rankings">Rankings</a></li>
-            <li><a href="/calendar">Calendar</a></li>
-            <li class="dropdown">
-                <a href="#">Information ▼</a>
-                <div class="dropdown-content">
-                    <a href="/about_fencing">About Fencing</a>
-                    <a href="/stories">Stories</a>
-                    <a href="/about_us">About Us</a>
-                </div>
-            </li>
-        </ul>
-        <div class="btns">
-            <button onclick="window.location.href='/login'">👤 Log In</button>
-        </div>
-    </nav>
-
+{% block body_id %}about_fencing-page{% endblock %}
+{% block body_style %}background: linear-gradient(135deg, #0088a9, #24252A);{% endblock %}
+    {% block content %}
     <main class="container">
         <h1>About Fencing</h1>
         <section class="intro">
@@ -79,19 +54,8 @@
             </div>
         </section>
     </main>
-
-    <footer>
-        <ul>
-            <li>&copy; 2024 Fencing Hub. All rights reserved.</li>
-        </ul>
-        <div class="social-media">
-            <a href="#"><img src="Static/Images/Logos/Facebook.png" alt="Facebook"></a>
-            <a href="#"><img src="Static/Images/Logos/X.png" alt="Twitter"></a>
-            <a href="#"><img src="Static/Images/Logos/Insta.png" alt="Instagram"></a>
-        </div>
-    </footer>
-
     <script src="script.js"></script>
 </body>
 
 </html>
+{% endblock %}
