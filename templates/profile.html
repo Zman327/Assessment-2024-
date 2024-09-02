@@ -27,6 +27,23 @@
             padding: 20px;
         }
 
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 30px;
+        }
+
+        .home-button a {
+            color: #edf0f1;
+            text-decoration: none;
+        }
+
+        .home-button a:hover {
+            color: #2e2f34;
+            transition: color 0.5s ease;
+        }
+
         .wrapper {
             background-color: #2e2f34;
             width: 600px; /* Increased the width */
@@ -203,55 +220,61 @@
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <form id="profile-form" method="POST" enctype="multipart/form-data">
-            <h1>Profile</h1>
+  <div class="home-button">
+    <a href="/home">
+        <i class='bx bx-home'></i>
+    </a>
+  </div>
 
-            <div class="profile-picture">
-                <img src="Static/Images/Profile/DefaultProfilePic.png" alt="Profile Picture" id="profile-pic">
-                <input type="file" name="profile-pic" accept="image/*" onchange="previewImage(event)">
-            </div>
+  <div class="wrapper">
+      <form id="profile-form" method="POST" enctype="multipart/form-data">
+          <h1>Profile</h1>
 
-            <div class="input-box">
-                <input type="text" id="username" name="username" required>
-                <p>Username</p>
-                <i class='bx bxs-user'></i>
-            </div>
-            <div class="input-box">
-                <input type="email" id="email" name="email" required>
-                <p>Email</p>
-                <i class='bx bx-envelope'></i>
-            </div>
-            <div class="input-box">
-                <input type="text" id="phone" name="phone" required>
-                <p>Phone</p>
-                <i class='bx bx-phone'></i>
-            </div>
-            <div class="input-box">
-                <textarea id="address" name="address" required></textarea>
-                <p>Address</p>
-                <i class='bx bx-home'></i>
-            </div>
+          <div class="profile-picture">
+              <img src="Static/Images/DefaultPP.png" alt="Profile Picture" id="profile-pic">
+              <input type="file" name="profile-pic" accept="image/*" onchange="previewImage(event)">
+          </div>
+
+          <div class="input-box">
+              <input type="text" id="username" name="username" value="{{ user_data['username'] }}" required>
+              <p>Username</p>
+              <i class='bx bxs-user'></i>
+          </div>
+          <div class="input-box">
+              <input type="email" id="email" name="email" value="{{ user_data['email'] }}" required>
+              <p>Email</p>
+              <i class='bx bx-envelope'></i>
+          </div>
+          <div class="input-box">
+              <input type="text" id="phone" name="phone" value="{{ user_data['phone'] }}" required>
+              <p>Phone</p>
+              <i class='bx bx-phone'></i>
+          </div>
+          <div class="input-box">
+              <textarea id="address" name="address" required>{{ user_data['address'] }}</textarea>
+              <p>Address</p>
+              <i class='bx bx-home'></i>
+          </div>
 <br>
-            <div class="button-container">
-                <button type="submit">Save Changes</button>
-            </div>
+          <div class="button-container">
+              <button type="submit">Save Changes</button>
+          </div>
 
-            <div class="profile-link">
-                <p><a href="/logout">Logout</a></p>
-            </div>
-        </form>
-    </div>
+          <div class="profile-link">
+              <p><a href="/logout">Logout</a></p>
+          </div>
+      </form>
+  </div>
 
-    <script>
-        function previewImage(event) {
-            var reader = new FileReader();
-            reader.onload = function(){
-                var output = document.getElementById('profile-pic');
-                output.src = reader.result;
-            }
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    </script>
+  <script>
+      function previewImage(event) {
+          var reader = new FileReader();
+          reader.onload = function(){
+              var output = document.getElementById('profile-pic');
+              output.src = reader.result;
+          }
+          reader.readAsDataURL(event.target.files[0]);
+      }
+  </script>
 </body>
 </html>

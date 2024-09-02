@@ -77,9 +77,11 @@ def loginpage():
     # If GET request, just render the login page
     return render_template('login.html')
 
+
 @app.route('/forgot-password')
 def forgotpasswordpage():
     return render_template('forgot_password.html')
+
 
 @app.route('/logout')
 def logout():
@@ -146,14 +148,47 @@ def storiespage():
 def aboutuspage():
     return render_template('about_us.html')
 
+
 @app.route('/privacy_policy')
 def privacypage():
     return render_template('privacy-policy.html')
 
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 def profilepage():
-    return render_template('profile.html')
+    if 'username' in session:
+        username = session['username']
+        
+        if request.method == 'POST':
+            new_username = request.form['username']
+            new_email = request.form['email']
+            new_phone = request.form['phone']
+            new_address = request.form['address']
+            
+            # Update the user's information in the database
+            do_sql("UPDATE Login SET username = ?, email = ?, phone = ?, address = ? WHERE username = ?",
+                   (new_username, new_email, new_phone, new_address, username))
+            
+            # Update session with new username if it was changed
+            session['username'] = new_username
+            
+            flash("Profile updated successfully!", "success")
+            return redirect(url_for('homepage'))
+        
+        user_info = do_sql("SELECT username, email, phone, address FROM Login WHERE username = ?", (username,))
+        if user_info:
+            user_data = {
+                "username": user_info[0][0],
+                "email": user_info[0][1],
+                "phone": user_info[0][2],
+                "address": user_info[0][3]
+            }
+            return render_template('profile.html', user_data=user_data)
+    else:
+        flash("You need to log in first!", "error")
+        return redirect(url_for('loginpage'))
+
+
 
 @app.route('/test')
 def testpage():
