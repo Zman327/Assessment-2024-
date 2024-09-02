@@ -25,10 +25,10 @@
             </li>
         </ul>
         <div class="btns">
-            {% if logged_in %}
-            <button onclick="window.location.href='/logout'">👤Log Out</button>
+            {% if session.username %}
+                <button onclick="window.location.href='/profile'">👤Profile</button>
             {% else %}
-            <button onclick="window.location.href='/login'">👤Log In</button>
+                <button onclick="window.location.href='/login'">👤Log In</button>
             {% endif %}
         </div>
     </nav>
@@ -46,24 +46,6 @@
             <a href="#"><img src="Static/Images/Logos/Insta.png" alt="Instagram"></a>
         </div>
     </footer>
-
-    <script>
-        // Function to check if the user is logged in
-        function isLoggedIn() {
-            return true; // Replace with actual logic
-        }
-
-        // Function to update the login button text
-        function updateLoginButton() {
-            var loginButton = document.getElementById('login-button');
-            if (isLoggedIn()) {
-                loginButton.textContent = '👤Log Out';
-                loginButton.onclick = function() {
-                    window.location.href = '/logout';
-                };
-            }
-        }
-    </script>
 
 </body>
 </html>

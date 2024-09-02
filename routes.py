@@ -85,7 +85,7 @@ def forgotpasswordpage():
 def logout():
     session.pop('username', None)
     flash("Logged out successfully!", "success")
-    return redirect(url_for('home'))
+    return redirect(url_for('homepage'))
 
 
 def get_fencers_with_images():
