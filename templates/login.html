@@ -56,10 +56,11 @@
         <form id="login-form" method="POST" action="/login">
             <h1>Login</h1>
             <div class="input-box">
-                <input type="text" id="username" name="username" required maxlength="20">
+                <input type="text" id="username" name="username" required maxlength="20" oninput="updateCharacterCount()">
                 <p>Username</p>
                 <i class='bx bxs-user'></i>
-            </div>
+                <span id="char-count" class="char-count"></span> 
+            </div>            
             <div class="input-box">
                 <input type="password" id="password" name="password" required maxlength="20">
                 <p>Password</p>
@@ -155,6 +156,26 @@
                 event.preventDefault();
             }
         });
+
+        function updateCharacterCount() {
+            const usernameField = document.getElementById('username');
+            const charCountDisplay = document.getElementById('char-count');
+            const charCount = usernameField.value.length;
+
+            if (charCount > 0) {
+                charCountDisplay.style.display = 'inline';
+                charCountDisplay.textContent = `${charCount}/20`;
+            } else {
+                charCountDisplay.style.display = 'none';
+            }
+
+            // Change the color of the text if the limit is reached
+            if (charCount === 20) {
+                charCountDisplay.style.color = '#0088a9'; // blue color
+            } else {
+                charCountDisplay.style.color = '#edf0f1'; // Default color
+            }
+        } 
     </script>
 </body>
 </html>

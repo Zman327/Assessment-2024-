@@ -1,10 +1,29 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash   # noqa:
+from flask import Flask, render_template, request, redirect, url_for, session, flash, session   # noqa:
 import sqlite3
-import hashlib  # For password hashing
+import hashlib
 import os
+
+from werkzeug.utils import secure_filename
+
+# Define the folder to save uploaded images to ensure that images are stored
+# in the correct place
+UPLOAD_FOLDER = 'Static/Images/profile'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
+
+# Function to check allowed file extensions to maintain data integrity
+# and ensure user does not insert wrong files types e.g ZIPs
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS   # noqa:
+
 
 app = Flask(__name__, template_folder='templates', static_folder='Static')
 app.secret_key = os.urandom(24)  # Secret key for session management
+# Using os.urandom(24) generates a 24-byte random key,
+# ensuring that the secret key is unique and unpredictable.
+
+# Set the upload folder in app configuration
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 def do_sql(sql, params=None):
@@ -15,8 +34,8 @@ def do_sql(sql, params=None):
     else:
         cur.execute(sql)
     result = cur.fetchall()
-    conn.commit()  # Ensure changes are committed
-    conn.close()  # Ensure to close the connection
+    conn.commit()
+    conn.close()
     return result
 
 
@@ -28,15 +47,20 @@ def registerpage():
         password = request.form['password']
         confirm_password = request.form['confirm-password']
 
-        # Check if passwords match
+        # Validate that the username and email do not exceed 20 characters to
+        # ensure data consistency and database integrity
+        if len(username) > 20 or len(email) > 20:
+            flash("Username and Email must not exceed 20 characters!", "error")
+            return redirect(url_for('registerpage'))
+
         if password != confirm_password:
             flash("Passwords do not match!", "error")
             return render_template('register.html')
 
-        # Hash the password
+        # Securely hash the password using SHA-256 to store it safely, used
+        # SHA-256 as it converts it into a fixed-size string
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
-        # Insert into the database
         try:
             do_sql("INSERT INTO Login (username, email, password) VALUES (?, ?, ?)",  # noqa:
                    (username, email, hashed_password))
@@ -51,28 +75,30 @@ def registerpage():
 @app.route('/login', methods=['GET', 'POST'])
 def loginpage():
     if request.method == 'POST':
-        # Retrieve form data
+        # Retrieve form data from the website
         username = request.form['username']
         password = request.form['password']
 
-        # Hash the password
+        # Hash the password using SHA256 due to its ability to convert text
+        # into a fixed-size string that doesn't reveal the original text
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
-        # Query the database to find the user
+        # Query the database to find the user to ensure that username AND
+        # password are both correct
         user = do_sql("SELECT * FROM Login WHERE username = ? AND password = ?", (username, hashed_password))  # noqa:
 
         # Check if user exists
         if user:
-            # Store username in session
+            # Store username in session, this is so that if user is to open
+            # page again, it will save the session
             session['username'] = username
             flash("Login successful!", "success")
             return redirect(url_for('homepage'))
         else:
-            # Display error message
-            flash("Invalid username or password!", "error")
+            # Display error for when username does not exist in database
+            flash("Incorrect username or password.", "error")
             return render_template('login.html')
 
-    # If GET request, just render the login page
     return render_template('login.html')
 
 
@@ -163,23 +189,37 @@ def profilepage():
             new_phone = request.form['phone']
             new_address = request.form['address']
 
-            # Update the user's information in the database
-            do_sql("UPDATE Login SET username = ?, email = ?, phone = ?, address = ? WHERE username = ?", # noqa: 
+            # Handle the file upload
+            if 'profile-pic' in request.files:
+                file = request.files['profile-pic']
+                if file and allowed_file(file.filename):
+                    filename = secure_filename(file.filename)
+                    # Save the file to the specified folder
+                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))    # noqa:
+                    # Create the path to save in the database
+                    file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)    # noqa:
+                    # Update the database with the new profile picture path
+                    do_sql("UPDATE Login SET profile_pic = ? WHERE username = ?", (file_path, username))    # noqa:
+
+            # Update the user's other information
+            do_sql("UPDATE Login SET username = ?, email = ?, phone = ?, address = ? WHERE username = ?",    # noqa:
                    (new_username, new_email, new_phone, new_address, username))
 
             # Update session with new username if it was changed
+            # this will make sure that the correct session is displayed
             session['username'] = new_username
 
             flash("Profile updated successfully!", "success")
             return redirect(url_for('homepage'))
 
-        user_info = do_sql("SELECT username, email, phone, address FROM Login WHERE username = ?", (username,))  # noqa:
+        user_info = do_sql("SELECT username, email, phone, address, profile_pic FROM Login WHERE username = ?", (username,))    # noqa:
         if user_info:
             user_data = {
                 "username": user_info[0][0],
                 "email": user_info[0][1],
                 "phone": user_info[0][2],
-                "address": user_info[0][3]
+                "address": user_info[0][3],
+                "profile_pic": user_info[0][4]
             }
             return render_template('profile.html', user_data=user_data)
     else:
@@ -187,11 +227,14 @@ def profilepage():
         return redirect(url_for('loginpage'))
 
 
+# testing page
 @app.route('/test')
 def testpage():
     return render_template('Test.html')
 
 
+# 404 page to display when a page is not found
+# helps re-direct users back to home page
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404

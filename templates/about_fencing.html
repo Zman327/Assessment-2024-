@@ -1,60 +1,70 @@
 {% extends "layout.html" %}
 
-{% block title %}About fencing - Fencing Hub{% endblock %}
+{% block title %}About Fencing - Fencing Hub{% endblock %}
 
 {% block body_id %}about_fencing-page{% endblock %}
 {% block body_style %}background: linear-gradient(135deg, #0088a9, #24252A);{% endblock %}
-    {% block content %}
-    <main class="container">
-        <h1>About Fencing</h1>
-        <section class="intro">
-            <div class="intro-text">
-                <h2>What Is Fencing</h2>
-                <p>Fencing is a sport with a rich history, blending strategy, precision, and athleticism. Originating from the ancient practice of swordsmanship, it has evolved into a modern Olympic sport.</p>
-                <p>There are three forms of modern fencing, each using a different kind of weapon and having different rules:</p>
-                <ul>
-                    <li><strong>Foil:</strong> A lightweight weapon targeting the torso, with points scored by the tip.</li>
-                    <li><strong>Épée:</strong> A heavier weapon targeting the entire body, with points scored by the tip.</li>
-                    <li><strong>Sabre:</strong> A light cutting and thrusting weapon targeting the upper body, with points scored by the edge and tip.</li>
-                </ul>
-            </div>
-            <div class="intro-video">
-                <video controls>
-                    <source src="Static/Images/About_Fencing.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p>Video courtesy of <a href="https://olympics.com/fr/paris-2024/videos/escrime">Olympics.com</a></p>
-            </div>
-        </section>
-<br>
-        <section class="history">
-            <h2>History of Fencing</h2>
-            <p>Fencing dates back to the earliest civilizations where swordplay was a key skill for warriors. It has been included in every modern Olympic Games since the first in 1896.</p>
-        </section>
 
-        <section class="techniques">
-            <h2>Basic Techniques</h2>
-            <div class="techniques-grid">
-                <div class="technique">
-                    <h3>En Garde</h3>
-                    <p>The fundamental position from which all attacks and defenses are made.</p>
-                </div>
-                <div class="technique">
-                    <h3>Lunge</h3>
-                    <p>A quick forward movement to attack the opponent.</p>
-                </div>
-                <div class="technique">
-                    <h3>Parry</h3>
-                    <p>A defensive action where the fencer blocks the opponent's attack.</p>
-                </div>
-                <div class="technique">
-                    <h3>Riposte</h3>
-                    <p>An offensive action following a successful parry.</p>
-                </div>
+{% block content %}
+<main class="container">
+    <h1>About Fencing</h1>
+    <section class="intro">
+        <div class="intro-text">
+            <h2>What Is Fencing</h2>
+            <p>Fencing is a sport with a rich history, blending strategy, precision, and athleticism. Originating from the ancient practice of swordsmanship, it has evolved into a modern Olympic sport.</p>
+            <p>There are three forms of modern fencing, each using a different kind of weapon and having different rules:</p>
+            <ul>
+                <li><strong>Foil:</strong> A lightweight weapon targeting the torso, with points scored by the tip.</li>
+                <li><strong>Épée:</strong> A heavier weapon targeting the entire body, with points scored by the tip.</li>
+                <li><strong>Sabre:</strong> A light cutting and thrusting weapon targeting the upper body, with points scored by the edge and tip.</li>
+            </ul>
+        </div>
+        <div class="intro-video">
+            <video controls>
+                <source src="Static/Images/About_Fencing.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p>Video courtesy of <a href="https://olympics.com/fr/paris-2024/videos/escrime">Olympics.com</a></p>
+        </div>
+    </section>
+    <br>
+    <br>
+    <section class="history">
+        <div class="history-content" style="display: flex; align-items: center;">
+            <div class="history-image" style="flex: 1; padding-right: 20px; size: 200%;">
+                <img src="Static/Images/history.jpg" alt="History of Fencing">
             </div>
-        </section>
-    </main>
-    <script src="script.js"></script>
+            <div class="history-text">
+                <h2>History of Fencing</h2>
+                <br>
+                <p>Fencing dates back to the earliest civilizations where swordplay was a key skill for warriors. It has been included in every modern Olympic Games since the first in 1896.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="techniques">
+        <h2>Basic Techniques</h2>
+        <div class="techniques-grid">
+            <div class="technique">
+                <h3>En Garde</h3>
+                <p>The fundamental position from which all attacks and defenses are made.</p>
+            </div>
+            <div class="technique">
+                <h3>Lunge</h3>
+                <p>A quick forward movement to attack the opponent.</p>
+            </div>
+            <div class="technique">
+                <h3>Parry</h3>
+                <p>A defensive action where the fencer blocks the opponent's attack.</p>
+            </div>
+            <div class="technique">
+                <h3>Riposte</h3>
+                <p>An offensive action following a successful parry.</p>
+            </div>
+        </div>
+    </section>
+</main>
+<script src="script.js"></script>
 </body>
 
 </html>

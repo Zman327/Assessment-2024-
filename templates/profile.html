@@ -26,180 +26,6 @@
             height: 100vh;
             padding: 20px;
         }
-
-        .wrapper {
-            background-color: #2e2f34;
-            width: 600px; /* Increased the width */
-            margin: auto;
-            border-radius: 15px;
-            padding: 50px 60px; /* Increased the padding */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .wrapper h1 {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .profile-picture {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .profile-picture img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #0088a9;
-            margin-bottom: 10px;
-        }
-
-        .profile-picture input {
-            border: none;
-            background-color: #0088a9;
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .profile-picture input:hover {
-            background-color: #006f88;
-        }
-
-        .input-box {
-            position: relative;
-            width: 100%;
-            height: 50px;
-            margin: 25px 0;
-        }
-
-        .input-box input, .input-box textarea {
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            border: none;
-            outline: none;
-            border: 2px solid rgba(237, 240, 241, 0.2);
-            border-radius: 30px;
-            font-size: 16px;
-            padding: 15px 20px;
-            color: #edf0f1;
-            transition: border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .input-box textarea {
-            height: 100px;
-            resize: none;
-        }
-
-        .input-box input::placeholder, .input-box textarea::placeholder {
-            color: rgba(237, 240, 241, 0.7);
-        }
-
-        .input-box i {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 20px;
-            color: #edf0f1;
-        }
-
-        .input-box p {
-            position: absolute;
-            font-weight: 200;
-            transform: translateY(-50%);
-            top: 50%;
-            left: 20px;
-            transition: all ease 0.3s;
-            pointer-events: none;
-            color: rgba(237, 240, 241, 0.9);
-        }
-
-        .input-box input:focus, .input-box input:valid,
-        .input-box textarea:focus, .input-box textarea:valid {
-            border-color: #0088a9;
-        }
-
-        .input-box input:focus + p, .input-box input:valid + p,
-        .input-box textarea:focus + p, .input-box textarea:valid + p {
-            top: -10px;
-            left: 15px;
-            font-size: 12px;
-            font-weight: 600;
-            color: rgba(237, 240, 241, 1);
-            background-color: #2e2f34;
-            padding: 0 5px;
-        }
-
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .button-container button {
-            padding: 12px 24px;
-            background-color: #0088a9;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 136, 169, 0.3);
-        }
-
-        .button-container button:hover {
-            background-color: #006f88;
-        }
-
-        .profile-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .profile-link p a {
-            color: #0088a9;
-            font-weight: 600;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .profile-link p a:hover {
-            color: #006f88;
-        }
-
-        /* Error and success styling */
-        .input-error {
-            border-color: red !important;
-            animation: shake 0.3s ease-in-out;
-        }
-
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-            100% { transform: translateX(0); }
-        }
-
-        /* Responsive styling */
-        @media (max-width: 768px) {
-            .wrapper {
-                width: 90%;
-                padding: 30px;
-            }
-
-            .input-box {
-                margin: 20px 0;
-            }
-        }
     </style>
 </head>
 <body>
@@ -209,35 +35,38 @@
     </a>
   </div>
 
-  <div class="wrapper">
+  <div class="wrapper_profile">
       <form id="profile-form" method="POST" enctype="multipart/form-data">
           <h1>Profile</h1>
 
           <div class="profile-picture">
-              <img src="Static/Images/DefaultPP.png" alt="Profile Picture" id="profile-pic">
-              <input type="file" name="profile-pic" accept="image/*" onchange="previewImage(event)">
-          </div>
-
-          <div class="input-box">
-              <input type="text" id="username" name="username" value="{{ user_data['username'] }}" required>
-              <p>Username</p>
-              <i class='bx bxs-user'></i>
-          </div>
-          <div class="input-box">
-              <input type="email" id="email" name="email" value="{{ user_data['email'] }}" required>
-              <p>Email</p>
-              <i class='bx bx-envelope'></i>
-          </div>
-          <div class="input-box">
-              <input type="text" id="phone" name="phone" value="{{ user_data['phone'] }}" required maxlength="10">
-              <p>Phone</p>
-              <i class='bx bx-phone'></i>
-          </div>
-          <div class="input-box">
-              <textarea id="address" name="address" required>{{ user_data['address'] }}</textarea>
-              <p>Address</p>
-              <i class='bx bx-home'></i>
-          </div>
+            <img src="{{ user_data['profile_pic'] if user_data['profile_pic'] else 'Static/Images/DefaultPP.png' }}" alt="Profile Picture" id="profile-pic">
+            <label for="profile-pic-input" class="custom-file-upload">Upload New Picture</label>
+            <input type="file" id="profile-pic-input" name="profile-pic" accept="image/*" onchange="previewImage(event)">
+        </div>
+        
+        <div class="input-box">
+            <input type="text" id="username" name="username" value="{{ user_data['username'] if user_data['username'] else '' }}" required maxlength="20" oninput="updateCharacterCount('username', 'username-char-count', 20)">
+            <p>Username</p>
+            <i class='bx bxs-user'></i>
+            <span id="username-char-count" class="char-count"></span>
+        </div>
+        <div class="input-box">
+            <input type="email" id="email" name="email" value="{{ user_data['email'] if user_data['email'] else '' }}" required maxlength="30" oninput="updateCharacterCount('email', 'email-char-count', 30)">
+            <p>Email</p>
+            <i class='bx bx-envelope'></i>
+            <span id="email-char-count" class="char-count"></span>
+        </div>
+        <div class="input-box">
+            <input type="text" id="phone" name="phone" value="{{ user_data['phone'] if user_data['phone'] else '' }}" required maxlength="11">
+            <p>Phone</p>
+            <i class='bx bx-phone'></i>
+        </div>
+        <div class="input-box">
+            <textarea id="address" name="address" required maxlength="30">{{ user_data['address'] if user_data['address'] else '' }} </textarea>
+            <p>Address</p>
+            <i class='bx bx-home'></i>
+        </div>
 <br>
           <div class="button-container">
               <button type="submit">Save Changes</button>
@@ -257,6 +86,30 @@
               output.src = reader.result;
           }
           reader.readAsDataURL(event.target.files[0]);
+      }
+
+      function updateCharacterCount(fieldId, countId, maxLength) {
+          const field = document.getElementById(fieldId);
+          const charCountDisplay = document.getElementById(countId);
+          const charCount = field.value.length;
+
+          if (charCount > 0) {
+              charCountDisplay.style.display = 'inline';
+              charCountDisplay.textContent = `${charCount}/${maxLength}`;
+          } else {
+              charCountDisplay.style.display = 'none';
+          }
+
+          // Change the color of the text if the limit is reached
+          if (charCount === maxLength) {
+              charCountDisplay.style.color = '#0088a9'; 
+          } else {
+              charCountDisplay.style.color = '#edf0f1'; // Default color
+          }
+      }
+
+      document.getElementById('profile-form').onsubmit = function(event) {
+          // Add any validation logic if needed
       }
   </script>
 </body>
