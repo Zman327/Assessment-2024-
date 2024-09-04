@@ -411,6 +411,10 @@ video {
     text-decoration: underline;
 }
 
+.bxs-lock-open {
+    color: #0088a9; /* Change color when password is visible */
+}
+
 /* RANKING */
 .container {
     max-width: 80%;
@@ -650,8 +654,10 @@ table th {
     color: #0088a9; /* Set a color for event titles */
 }
 
-
-
+#calendar td.has-event {
+    border: 2px solid #0088a9; /* Customize the border color and thickness */
+    font-weight: bold;
+}
 
 /* ABOUT US */
 .about-us {
@@ -694,7 +700,6 @@ table th {
     line-height: 1.6;
     text-align: justify;
 }
-
 
 .intro {
     display: flex;

@@ -61,19 +61,19 @@
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
-                <input type="email" id="SignUp-email" name="email" required>
+                <input type="email" id="SignUp-email" name="email" required maxlength="30">
                 <p>Email</p>
                 <i class='bx bx-envelope' ></i>
             </div>
             <div class="input-box">
                 <input type="password" id="password" name="password" required maxlength="20">
                 <p>Password</p>
-                <i class='bx bxs-lock-alt'></i>
+                <i class='bx bxs-lock-alt' id="toggle-password" onclick="togglePasswordVisibility('password', 'toggle-password')"></i>
             </div>
             <div class="input-box">
                 <input type="password" id="confirm-password" name="confirm-password" required maxlength="20">
                 <p>Confirm password</p>
-                <i class='bx bxs-lock-alt'></i>
+                <i class='bx bxs-lock-alt' id="toggle-confirm-password" onclick="togglePasswordVisibility('confirm-password', 'toggle-confirm-password')"></i>
             </div>
             
             <div class="privacy-policy">
@@ -92,6 +92,22 @@
     </div>
 
     <script>
+        function togglePasswordVisibility(fieldId, iconId) {
+            const passwordField = document.getElementById(fieldId);
+            const toggleIcon = document.getElementById(iconId);
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.classList.remove('bxs-lock-alt');
+                toggleIcon.classList.add('bxs-lock-open');
+            } else {
+                passwordField.type = "password";
+                toggleIcon.classList.remove('bxs-lock-open');
+                toggleIcon.classList.add('bxs-lock-alt');
+            }
+        }
+
+
         document.getElementById('registration-form').onsubmit = function(event) {
             var password = document.getElementById('password').value;
             var confirmPassword = document.getElementById('confirm-password').value;

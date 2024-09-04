@@ -68,7 +68,6 @@
         </div>
     </main>
     
-    <!-- JavaScript for Dynamic Calendar and Event List -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const monthSelect = document.getElementById('month');
@@ -105,6 +104,16 @@
                     if (isCurrentMonthAndYear && day === today.getDate()) {
                         cell.classList.add('today');
                     }
+
+                    // Check if this date has any events
+                    const eventDateStr = `${year}-${month + 1}-${day}`.replace(/-(\d)(?=\D|$)/g, '-0$1');
+                    const eventsItems = upcomingEventList.querySelectorAll('li');
+                    eventsItems.forEach(event => {
+                        const eventDate = event.getAttribute('data-date');
+                        if (eventDate === eventDateStr) {
+                            cell.classList.add('has-event'); // Add class for dates with events
+                        }
+                    });
 
                     row.appendChild(cell);
                 }

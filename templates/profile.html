@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Fencing Hub - Profile</title>
+    <title>Profile - Fencing Hub</title>
     <link rel="icon" type="image/png" href="Static/Images/Logos/Logo.png">
     <link rel="stylesheet" href="/Static/styles.css">
     <style>
@@ -25,23 +25,6 @@
             align-items: center;
             height: 100vh;
             padding: 20px;
-        }
-
-        .home-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 30px;
-        }
-
-        .home-button a {
-            color: #edf0f1;
-            text-decoration: none;
-        }
-
-        .home-button a:hover {
-            color: #2e2f34;
-            transition: color 0.5s ease;
         }
 
         .wrapper {
@@ -246,7 +229,7 @@
               <i class='bx bx-envelope'></i>
           </div>
           <div class="input-box">
-              <input type="text" id="phone" name="phone" value="{{ user_data['phone'] }}" required>
+              <input type="text" id="phone" name="phone" value="{{ user_data['phone'] }}" required maxlength="10">
               <p>Phone</p>
               <i class='bx bx-phone'></i>
           </div>

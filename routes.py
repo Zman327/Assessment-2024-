@@ -1,7 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash   # noqa:
 import sqlite3
-import base64
-import json
 import hashlib  # For password hashing
 import os
 
@@ -40,7 +38,7 @@ def registerpage():
 
         # Insert into the database
         try:
-            do_sql("INSERT INTO Login (username, email, password) VALUES (?, ?, ?)",
+            do_sql("INSERT INTO Login (username, email, password) VALUES (?, ?, ?)",  # noqa:
                    (username, email, hashed_password))
             flash("Registration successful!", "success")
             return redirect(url_for('loginpage'))
@@ -56,24 +54,24 @@ def loginpage():
         # Retrieve form data
         username = request.form['username']
         password = request.form['password']
-        
+
         # Hash the password
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
         # Query the database to find the user
-        user = do_sql("SELECT * FROM Login WHERE username = ? AND password = ?", (username, hashed_password))
+        user = do_sql("SELECT * FROM Login WHERE username = ? AND password = ?", (username, hashed_password))  # noqa:
 
         # Check if user exists
         if user:
             # Store username in session
             session['username'] = username
             flash("Login successful!", "success")
-            return redirect(url_for('homepage'))  # Redirect to homepage on successful login
+            return redirect(url_for('homepage'))
         else:
             # Display error message
             flash("Invalid username or password!", "error")
             return render_template('login.html')
-    
+
     # If GET request, just render the login page
     return render_template('login.html')
 
@@ -123,25 +121,25 @@ def calendarpage():
 
 @app.route('/rankings')
 def rankingpage():
-    Mepee = do_sql("SELECT * FROM Male_Fencers WHERE weapon = 'Epee' ORDER BY rank ASC")
-    Mfoil = do_sql("SELECT * FROM Male_Fencers WHERE weapon = 'Foil' ORDER BY rank ASC")
-    Msabre = do_sql("SELECT * FROM Male_Fencers WHERE weapon = 'Sabre' ORDER BY rank ASC")
-    Fepee = do_sql("SELECT * FROM Female_Fencers WHERE weapon = 'Epee' ORDER BY rank ASC")
-    Ffoil = do_sql("SELECT * FROM Female_Fencers WHERE weapon = 'Foil' ORDER BY rank ASC")
-    Fsabre = do_sql("SELECT * FROM Female_Fencers WHERE weapon = 'Sabre' ORDER BY rank ASC")
+    Mepee = do_sql("SELECT * FROM Male_Fencers WHERE weapon = 'Epee' ORDER BY rank ASC")  # noqa:
+    Mfoil = do_sql("SELECT * FROM Male_Fencers WHERE weapon = 'Foil' ORDER BY rank ASC")  # noqa:
+    Msabre = do_sql("SELECT * FROM Male_Fencers WHERE weapon = 'Sabre' ORDER BY rank ASC")  # noqa:
+    Fepee = do_sql("SELECT * FROM Female_Fencers WHERE weapon = 'Epee' ORDER BY rank ASC")  # noqa:
+    Ffoil = do_sql("SELECT * FROM Female_Fencers WHERE weapon = 'Foil' ORDER BY rank ASC")  # noqa:
+    Fsabre = do_sql("SELECT * FROM Female_Fencers WHERE weapon = 'Sabre' ORDER BY rank ASC")  # noqa:
     male_fencers = get_fencers_with_images()
-    return render_template('rankings.html', Fepee=Fepee, Ffoil=Ffoil, Fsabre=Fsabre, Mepee=Mepee, Mfoil=Mfoil, Msabre=Msabre, male_fencers=male_fencers)
+    return render_template('rankings.html', Fepee=Fepee, Ffoil=Ffoil, Fsabre=Fsabre, Mepee=Mepee, Mfoil=Mfoil, Msabre=Msabre, male_fencers=male_fencers)  # noqa:
 
 
 @app.route('/stories')
 def storiespage():
-    Mepee = do_sql("SELECT * FROM Male_Fencers WHERE weapon = 'Epee' ORDER BY rank ASC LIMIT 5")
-    Mfoil = do_sql("SELECT * FROM Male_Fencers WHERE weapon = 'Foil' ORDER BY rank ASC LIMIT 5")
-    Msabre = do_sql("SELECT * FROM Male_Fencers WHERE weapon = 'Sabre' ORDER BY rank ASC LIMIT 5")
-    Fepee = do_sql("SELECT * FROM Female_Fencers WHERE weapon = 'Epee' ORDER BY rank ASC LIMIT 5")
-    Ffoil = do_sql("SELECT * FROM Female_Fencers WHERE weapon = 'Foil' ORDER BY rank ASC LIMIT 5")
-    Fsabre = do_sql("SELECT * FROM Female_Fencers WHERE weapon = 'Sabre' ORDER BY rank ASC LIMIT 5")
-    return render_template('stories.html', Fepee=Fepee, Ffoil=Ffoil, Fsabre=Fsabre, Mepee=Mepee, Mfoil=Mfoil, Msabre=Msabre)
+    Mepee = do_sql("SELECT * FROM Male_Fencers WHERE weapon = 'Epee' ORDER BY rank ASC LIMIT 5")   # noqa:
+    Mfoil = do_sql("SELECT * FROM Male_Fencers WHERE weapon = 'Foil' ORDER BY rank ASC LIMIT 5")  # noqa:
+    Msabre = do_sql("SELECT * FROM Male_Fencers WHERE weapon = 'Sabre' ORDER BY rank ASC LIMIT 5")  # noqa:
+    Fepee = do_sql("SELECT * FROM Female_Fencers WHERE weapon = 'Epee' ORDER BY rank ASC LIMIT 5")  # noqa:
+    Ffoil = do_sql("SELECT * FROM Female_Fencers WHERE weapon = 'Foil' ORDER BY rank ASC LIMIT 5")  # noqa:
+    Fsabre = do_sql("SELECT * FROM Female_Fencers WHERE weapon = 'Sabre' ORDER BY rank ASC LIMIT 5")  # noqa:
+    return render_template('stories.html', Fepee=Fepee, Ffoil=Ffoil, Fsabre=Fsabre, Mepee=Mepee, Mfoil=Mfoil, Msabre=Msabre)  # noqa:
 
 
 @app.route('/about_us')
@@ -158,24 +156,24 @@ def privacypage():
 def profilepage():
     if 'username' in session:
         username = session['username']
-        
+
         if request.method == 'POST':
             new_username = request.form['username']
             new_email = request.form['email']
             new_phone = request.form['phone']
             new_address = request.form['address']
-            
+
             # Update the user's information in the database
-            do_sql("UPDATE Login SET username = ?, email = ?, phone = ?, address = ? WHERE username = ?",
+            do_sql("UPDATE Login SET username = ?, email = ?, phone = ?, address = ? WHERE username = ?", # noqa: 
                    (new_username, new_email, new_phone, new_address, username))
-            
+
             # Update session with new username if it was changed
             session['username'] = new_username
-            
+
             flash("Profile updated successfully!", "success")
             return redirect(url_for('homepage'))
-        
-        user_info = do_sql("SELECT username, email, phone, address FROM Login WHERE username = ?", (username,))
+
+        user_info = do_sql("SELECT username, email, phone, address FROM Login WHERE username = ?", (username,))  # noqa:
         if user_info:
             user_data = {
                 "username": user_info[0][0],
@@ -189,10 +187,10 @@ def profilepage():
         return redirect(url_for('loginpage'))
 
 
-
 @app.route('/test')
 def testpage():
     return render_template('Test.html')
+
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -201,6 +199,3 @@ def page_not_found(e):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-from flask import render_template

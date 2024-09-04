@@ -3,97 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fencing Hub</title>
+    <title>Login - Fencing Hub</title>
     <link rel="stylesheet" href="/Static/styles.css">
-    <!-- Add favicon -->
     <link rel="icon" type="image/png" href="Static/Images/Logos/Logo.png">
-</head>
-<body id="index-page" style="background: linear-gradient(135deg, #24252A, #0088a9);">
-        <nav class="navbar"> 
-            <img src="Static/Images/Logos/Logo_removed.png" alt="Logo" class="logo-img">
-            <ul class="menu">
-                <li><a href="/home">Home</a></li>
-                <li><a href="/rankings">Rankings</a></li>
-                <li><a href="/calendar">Calendar</a></li>
-                <li class="dropdown">
-                    <a href="#">Information ▼</a>
-                    <div class="dropdown-content">
-                        <a href="/about_fencing">About Fencing</a>
-                        <a href="/stories">Stories</a>
-                        <a href="/about_us">About Us</a>
-                    </div>
-                </li>
-            </ul>
-            <div class="btns">
-                <button onclick="window.location.href='/profile'">👤Profile</button>
-            </div>
-        </nav>
-    <video id="video-background" autoplay loop muted>
-        <source src="Static/Images/video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-        <script src="script.js"></script> 
-    </video>
-
-    <main>
-        <div class="welcome-overlay">
-            <h1>Fencing Hub</h1>
-            <p>Your ultimate destination for all things fencing.</p>
-            <div class="btns">
-                <button onclick="window.location.href='/rankings'">Rankings</button>
-                <button onclick="window.location.href='/about_us'">About us</button>
-            </div>
-        </div>          
-    </main>
-
-    <footer>
-        <ul>
-            <li>&copy; 2024 Fencing Hub. All rights reserved.</li>
-        </ul>
-        <div class="social-media">
-            <a href="#"><img src="Static/Images/Logos/Facebook.png" alt="Facebook"></a>
-            <a href="#"><img src="Static/Images/Logos/X.png" alt="Twitter"></a>
-            <a href="#"><img src="Static/Images/Logos/Insta.png" alt="Instagram"></a>
-        </div>
-    </footer>
-</body>
-<script>
-    // Function to check if the user is logged in
-    function isLoggedIn() {
-        // This is a placeholder function.
-        // Replace it with actual logic to check if the user is logged in.
-        // For example, you might check a cookie, local storage, or make an API call.
-        return true; // Assume user is logged in for this example
-    }
-
-    // Function to update the login button text
-    function updateLoginButton() {
-        var loginButton = document.getElementById('login-button');
-        if (isLoggedIn()) {
-            loginButton.textContent = '👤Log Out'; // Update the button text
-            loginButton.onclick = function() {
-                window.location.href = '/logout'; // Update the button action
-            };
+    <style>
+        /* Additional styles for the login page */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('Static/Images/Background.jpg') no-repeat center;
+            background-size: cover;
+            color: #333;
         }
-    }
-document.addEventListener('DOMContentLoaded', () => {
-    const loginButton = document.querySelector('.btns button');
-    const isLoggedIn = Boolean(localStorage.getItem('userLoggedIn'));
 
-    if (isLoggedIn) {
-        loginButton.textContent = '👤Log Out';
-        loginButton.onclick = () => {
-            localStorage.removeItem('userLoggedIn');
-            window.location.href = '/logout';
-        };
-    } else {
-        loginButton.textContent = '👤Log In';
-        loginButton.onclick = () => {
-            window.location.href = '/login';
-        };
-    }
-});
-    // Call the function to update the login button text when the page loads
-    window.onload = updateLoginButton;
-</script>
+        .login-form {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
 
+        .login-form h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #0acac7;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-form button:hover {
+            background-color: #0a9b9a;
+        }
+
+        .login-form p {
+            margin-top: 20px;
+        }
+
+        .login-form p a {
+            color: #0acac7;
+            text-decoration: none;
+        }
+
+        .login-form p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body id="register-page" style="background: url('Static/Images/Background.jpg') no-repeat center; background-size: cover;">
+    <main class="main_container">
+        <section class="form-section">
+            <h1>Register</h1>
+            <form action="/register" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+            <p class="login-link">Already have an account? <a href="/login">Login here</a></p>
+        </section>
+    </main>
+</body>
 </html>
