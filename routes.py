@@ -141,7 +141,7 @@ def aboutfencingpage():
 
 @app.route('/calendar')
 def calendarpage():
-    events = do_sql("SELECT * FROM Events ORDER BY start_date ASC")
+    events = do_sql("SELECT event_id, event_name, start_date, gender, location, weapon FROM Events ORDER BY start_date ASC")  # noqa:
     return render_template('calendar.html', events=events)
 
 
