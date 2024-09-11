@@ -107,7 +107,7 @@
                 const eventDateStr = `${year}-${month + 1}-${day}`.replace(/-(\d)(?=\D|$)/g, '-0$1');
                 const eventsItems = upcomingEventList.querySelectorAll('li');
                 eventsItems.forEach(event => {
-                    const eventDate = event.getAttribute('data-date');
+                    const eventDate = event.querySelector('.event-title').getAttribute('data-date'); // Target the span
                     if (eventDate === eventDateStr) {
                         cell.classList.add('has-event');
                     }
