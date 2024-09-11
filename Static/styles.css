@@ -832,6 +832,20 @@ table th {
     font-weight: bold;
 }
 
+.event-item {
+    cursor: pointer;
+}
+
+.arrow {
+    font-size: 0.8em;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.event-item.open .arrow {
+    transform: rotate(180deg);
+}
+
 /* ABOUT US */
 .about-us {
     background-color: #f9f9f9;
