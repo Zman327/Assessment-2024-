@@ -49,8 +49,12 @@ def registerpage():
 
         # Validate that the username and email do not exceed 20 characters to
         # ensure data consistency and database integrity
-        if len(username) > 20 or len(email) > 20:
-            flash("Username and Email must not exceed 20 characters!", "error")
+        if len(username) > 20:
+            flash("Username must not exceed 20 characters!", "error")
+            return redirect(url_for('registerpage'))
+
+        if len(email) > 30:
+            flash("Username must not exceed 20 characters!", "error")
             return redirect(url_for('registerpage'))
 
         if password != confirm_password:

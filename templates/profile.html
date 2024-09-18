@@ -58,7 +58,7 @@
             <span id="email-char-count" class="char-count"></span>
         </div>
         <div class="input-box">
-            <input type="text" id="phone" name="phone" value="{{ user_data['phone'] if user_data['phone'] else '' }}" required maxlength="11">
+            <input type="tel" id="phone" name="phone" value="{{ user_data['phone'] if user_data['phone'] else '' }}" required maxlength="11" oninput="validatePhoneNumber()">
             <p>Phone</p>
             <i class='bx bx-phone'></i>
         </div>
@@ -111,6 +111,12 @@
       document.getElementById('profile-form').onsubmit = function(event) {
           // Add any validation logic if needed
       }
+
+      function validatePhoneNumber() {
+        const phoneInput = document.getElementById('phone');
+        phoneInput.value = phoneInput.value.replace(/[^0-9]/g, ''); // Allow only numbers
+      }
+
   </script>
 </body>
 </html>

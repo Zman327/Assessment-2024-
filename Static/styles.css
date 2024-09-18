@@ -23,6 +23,22 @@ h1 {
     /* Further adjustments for mobile devices */
 }
 
+.flash-success {
+    color: green;
+    background-color: #e0ffe0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.flash-error {
+    color: red;
+    background-color: #ffe0e0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
 /* NAVBAR & FOOTER*/
 .navbar {
     background-color: #fff;
