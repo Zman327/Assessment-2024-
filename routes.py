@@ -2,8 +2,14 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 import sqlite3
 import hashlib
 import os
-
 from werkzeug.utils import secure_filename
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+app = Flask(__name__)
+app.secret_key = 'your_secret_key'
+
 
 # Define the folder to save uploaded images to ensure that images are stored
 # in the correct place

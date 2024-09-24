@@ -19,11 +19,13 @@
         .container {
             text-align: center;
         }
+        
         .oops {
             font-size: 10rem;
             background: url('Static/Images/Background.jpg') no-repeat;
             -webkit-background-clip: text;
-            color: transparent;
+            background-clip: text; /* Standard property */
+            color: transparent; /* Makes the text color transparent to show the background */
         }
         .message {
             font-size: 1.5rem;

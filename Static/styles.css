@@ -318,6 +318,25 @@ video {
   border-color: #0088a9;
 }
 
+.flashes {
+    list-style-type: none;
+    padding: 0;
+}
+
+.flashes li {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+}
+
+.flashes li.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
 .input-box input:focus + p,
 .input-box input:valid + p {
   top: -10px;
