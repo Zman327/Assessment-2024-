@@ -250,5 +250,55 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 
+def send_email(to_email, subject, message_body):
+    # Email configuration
+    sender_name = "Fencing Hub"
+    sender_email = "z.fencing.hub"
+    sender_password = "diei mpdb lfck zgsz"
+    # Use app-specific password for security
+
+    # Create the email
+    msg = MIMEMultipart()
+    msg['From'] = sender_name
+    msg['To'] = to_email
+    msg['Subject'] = subject
+    msg.attach(MIMEText(message_body, 'plain'))
+
+    try:
+        # Connect to the server and send the email
+        server = smtplib.SMTP('smtp.gmail.com', 587)  # Use your SMTP server
+        server.starttls()  # Secure the connection
+        server.login(sender_email, sender_password)
+        server.sendmail(sender_email, to_email, msg.as_string())
+        server.quit()
+
+        print("Email sent successfully!")
+        return True
+    except Exception as e:
+        print(f"Failed to send email: {e}")
+        return False
+
+
+@app.route('/forgot-password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        email = request.form['email']
+
+        # Validate the email if necessary
+        if not email:
+            flash("Please enter a valid email address!", "error")
+            return redirect(url_for('forgot_password'))
+
+        # Send email using the send_email function
+        subject = "Password Reset Request"
+        message_body = f"Kia Ora User, ,\n\nClick the link below to reset your password:\n\nhttp://example.com/reset-password?email={email}\n\nIf you did not request this, please ignore this email. " # noqa
+        if send_email(email, subject, message_body):
+            flash("Password reset email has been sent!", "success")
+        else:
+            flash("Failed to send the email. Please try again.", "error")
+
+    return render_template('forgot_password.html')
+
+
 if __name__ == "__main__":
     app.run(debug=True)
