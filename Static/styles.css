@@ -73,6 +73,10 @@ h1 {
     display: flex;
 }
 
+#home-page {
+    background-color: black;
+}
+
 .menu li {
     margin-right: 30px;
 }
@@ -152,8 +156,6 @@ footer .social-media img:hover {
     transform: scale(1.2);
 }
 
-
-
 /* HOMEPAGE */
 #home {
     position: relative;
@@ -207,6 +209,11 @@ video {
 .btns button:hover {
     background-color: #0088a9;
     color: #fff;
+}
+
+.btns button i {
+    transform: translateY(3px);
+    font-size: 20px;
 }
 
 /* RANKING */

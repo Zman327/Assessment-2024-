@@ -126,6 +126,7 @@ def get_fencers_with_images():
     for fencer in fencers:
         fencer_with_image = list(fencer)
         if fencer_with_image[3]:  # Check if fencer_photo is not None
+            # This allows us to use defult PP
             fencers_with_images.append(fencer_with_image)
     return fencers_with_images
 
@@ -195,6 +196,11 @@ def profilepage():
             new_phone = request.form['phone']
             new_address = request.form['address']
 
+            # Input validation: Check if the input exceeds 30 characters
+            # So that user can't circumvent field length and insert to database
+            if len(new_username) > 30 or len(new_email) > 30 or len(new_phone) > 30 or len(new_address) > 30: # noqa:
+                return redirect(url_for('profilepage'))
+
             # Handle the file upload in the profile page
             if 'profile-pic' in request.files:
                 file = request.files['profile-pic']
@@ -209,7 +215,6 @@ def profilepage():
                    (new_username, new_email, new_phone, new_address, username))
 
             # Update session with new username if it was changed
-            # this will make sure that the correct session is displayed
             session['username'] = new_username
 
             return redirect(url_for('homepage'))
@@ -257,7 +262,7 @@ def send_email(to_email, subject, message_body):
 
     try:
         # Connect to the server and send the email
-        server = smtplib.SMTP('smtp.gmail.com', 587)  # Use your SMTP server
+        server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()  # Secure the connection
         server.login(sender_email, sender_password)
         server.sendmail(sender_email, to_email, msg.as_string())

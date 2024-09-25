@@ -6,6 +6,7 @@
     <title>{% block title %}Fencing Hub{% endblock %}</title>
     <link rel="stylesheet" href="/Static/styles.css">
     <link rel="icon" type="image/png" href="Static/Images/Logos/logo.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body id="{% block body_id %}index-page{% endblock %}" style="background: linear-gradient(135deg, #0088a9, #24252A);">
 
@@ -26,9 +27,9 @@
         </ul>
         <div class="btns">
             {% if session.username %}
-                <button onclick="window.location.href='/profile'">👤Profile</button>
+                <button onclick="window.location.href='/profile'"><i class='bx bxs-user'></i> Profile</button>
             {% else %}
-                <button onclick="window.location.href='/login'">👤Log In</button>
+                <button onclick="window.location.href='/login'"><i class='bx bxs-user'></i> Log In</button>
             {% endif %}
         </div>
     </nav>
