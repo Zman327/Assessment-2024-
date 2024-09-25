@@ -74,7 +74,6 @@ def registerpage():
         try:
             do_sql("INSERT INTO Login (username, email, password) VALUES (?, ?, ?)",  # noqa:
                    (username, email, hashed_password))
-            flash("Registration successful!", "success")
             return redirect(url_for('loginpage'))
         except sqlite3.IntegrityError:
             flash("Username or Email already exists!", "error")
@@ -102,11 +101,9 @@ def loginpage():
             # Store username in session, this is so that if user is to open
             # page again, it will save the session
             session['username'] = username
-            flash("Login successful!", "success")
             return redirect(url_for('homepage'))
         else:
             # Display error for when username does not exist in database
-            flash("Incorrect username or password.", "error")
             return render_template('login.html')
 
     return render_template('login.html')
@@ -120,7 +117,6 @@ def forgotpasswordpage():
 @app.route('/logout')
 def logout():
     session.pop('username', None)
-    flash("Logged out successfully!", "success")
     return redirect(url_for('homepage'))
 
 
@@ -199,16 +195,13 @@ def profilepage():
             new_phone = request.form['phone']
             new_address = request.form['address']
 
-            # Handle the file upload
+            # Handle the file upload in the profile page
             if 'profile-pic' in request.files:
                 file = request.files['profile-pic']
                 if file and allowed_file(file.filename):
                     filename = secure_filename(file.filename)
-                    # Save the file to the specified folder
                     file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))    # noqa:
-                    # Create the path to save in the database
                     file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)    # noqa:
-                    # Update the database with the new profile picture path
                     do_sql("UPDATE Login SET profile_pic = ? WHERE username = ?", (file_path, username))    # noqa:
 
             # Update the user's other information
@@ -219,7 +212,6 @@ def profilepage():
             # this will make sure that the correct session is displayed
             session['username'] = new_username
 
-            flash("Profile updated successfully!", "success")
             return redirect(url_for('homepage'))
 
         user_info = do_sql("SELECT username, email, phone, address, profile_pic FROM Login WHERE username = ?", (username,))    # noqa:
@@ -255,7 +247,6 @@ def send_email(to_email, subject, message_body):
     sender_name = "Fencing Hub"
     sender_email = "z.fencing.hub"
     sender_password = "diei mpdb lfck zgsz"
-    # Use app-specific password for security
 
     # Create the email
     msg = MIMEMultipart()
@@ -289,11 +280,18 @@ def forgot_password():
             flash("Please enter a valid email address!", "error")
             return redirect(url_for('forgot_password'))
 
+        # Check if the email exists in the database
+        user = do_sql("SELECT * FROM Login WHERE email = ?", (email,))
+        if not user:
+            flash("This email address is not registered!", "error")
+            return redirect(url_for('forgot_password'))
+
         # Send email using the send_email function
         subject = "Password Reset Request"
-        message_body = f"Kia Ora User, ,\n\nClick the link below to reset your password:\n\nhttp://example.com/reset-password?email={email}\n\nIf you did not request this, please ignore this email. " # noqa
+        message_body = f"Kia Ora User,\n\nClick the link below to reset your password:\n\nhttp://fencingHUB.com/reset-password\n*Please not that the link does not work*\n\nIf you did not request this, please ignore this email.\n\nMany Thanks\nThe Fencing Hub Team" # noqa
+
         if send_email(email, subject, message_body):
-            flash("Password reset email has been sent!", "success")
+            flash("Reset email has been sent!", "success")
         else:
             flash("Failed to send the email. Please try again.", "error")
 

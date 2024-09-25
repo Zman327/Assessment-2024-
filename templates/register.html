@@ -6,44 +6,8 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Register - Fencing Hub</title>
     <link rel="icon" type="image/png" href="Static/Images/Logos/logo.png">
+    <link rel="stylesheet" href="/Static/login.css">
     <link rel="stylesheet" href="/Static/styles.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-        * {
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-          font-family: "Montserrat", sans-serif;
-        }
-
-        body {
-          background: linear-gradient(135deg, #0088a9, #24252A);
-          color: #edf0f1;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-          padding: 20px;
-        }
-
-        button {
-          width: 100%;
-          padding: 12px;
-          background-color: #0088a9;
-          border: none;
-          border-radius: 30px;
-          cursor: pointer;
-          font-weight: 600;
-          transition: background-color 0.3s ease;
-          box-shadow: 0 4px 10px rgba(0, 136, 169, 0.3);
-        }
-
-        button:hover {
-          background-color: #006f88;
-        }
-
-    </style>
 </head>
 <body>
     <div class="home-button">
@@ -84,7 +48,17 @@
               </p>
           </div>
             <div id="error-message" class="error">Please make sure passwords match.</div>
-            <button type="submit" class="login-submit">Register</button>
+                <!-- Flash messages -->
+                    {% with messages = get_flashed_messages(with_categories=True) %}
+                    {% if messages %}
+                        <div class="flashes">
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">{{ message }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+            <button type="submit" class="login">Register</button>
 
             <div class="register-link">
                 <p>Already have an account? 
