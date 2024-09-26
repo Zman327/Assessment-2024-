@@ -880,6 +880,18 @@ table th {
 }
 
 /*404 page*/
+body.page-404 {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
 .container-404 {
     text-align: center;
 }
@@ -904,4 +916,12 @@ table th {
 
 .home-button-404 a:hover {
     background-color: #0056b3;
+}
+
+.oops {
+    font-size: 10rem;
+    background: linear-gradient(135deg, #0088a9, #24252A);
+    -webkit-background-clip: text;
+    background-clip: text; /* Standard property */
+    color: transparent; /* Makes the text color transparent to show the background */
 }

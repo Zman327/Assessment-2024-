@@ -4,21 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     video.playbackRate = 0.5;
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const matches = document.querySelectorAll('.game-slider_col_item');
-    const cycleMatchBtn = document.getElementById('cycle-match-btn');
-    let currentMatchIndex = 0;
-
-    cycleMatchBtn.addEventListener('click', function () {
-        // Hide the current match
-        matches[currentMatchIndex].style.display = 'none';
-        // Increment the index to show the next match
-        currentMatchIndex = (currentMatchIndex + 1) % matches.length;
-        // Show the next match
-        matches[currentMatchIndex].style.display = 'block';
-    });
-});
-
 document.addEventListener("DOMContentLoaded", function() {
     renderCalendar();
 });
